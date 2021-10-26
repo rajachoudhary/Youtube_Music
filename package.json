@@ -1,0 +1,23 @@
+{
+  "name": "youtube_music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server db.json --watch "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajachoudhary/Youtube_Music.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajachoudhary/Youtube_Music/issues"
+  },
+  "homepage": "https://github.com/rajachoudhary/Youtube_Music#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
