@@ -8,22 +8,24 @@ const displayIcon = ( { name="Music", ImgSrc="https://music.youtube.com/img/on_p
     const text = document.createElement("h1");
 
     container.className = "nav-icons";
-    text.className = "nav-text";
+    text.className = "nav-texts";
     text.innerHTML = name;
 
     if ( name == "Music" ){
         const logo = document.createElement("img");
         logo.src = ImgSrc;
         logo.className = "nav-icons logo";
-        text.className += " nav-md";
+        text.className += " nav-search-text";
         container.append( logo );
     } else {
-        const logo = document.createElement("span");
+        const logo = document.createElement("div");
         logo.innerHTML = ImgSrc; 
-        logo.className += " nav-md";
+        logo.className = "nav-md-logo";
         text.className += " nav-large";
         container.append( logo );
     }
+
+    container.className = "flex hover"
 
     container.append( text );
     return container;
@@ -38,8 +40,9 @@ const displaySearch = () => {
     searchText.textContent = "Search";
 
     searchIcon.className = "nav-icons logo";
-    searchText.className = "nav-texts nav-large";
-    
+    searchText.className = "nav-texts nav-search-text";
+    container.className = "flex hover"
+
     container.append( searchIcon, searchText );
     return container;
 }
@@ -65,31 +68,33 @@ const displayMainBar = ( pageTitle ) => {
         ImgSrc: `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M12 0.47998C5.63998 0.47998 0.47998 5.63998 0.47998 12C0.47998 18.36 5.63998 23.52 12 23.52C18.36 23.52 23.52 18.36 23.52 12C23.52 5.63998 18.36 0.47998 12 0.47998ZM12 18.82C8.22998 18.82 5.17998 15.77 5.17998 12C5.17998 8.22998 8.22998 5.17998 12 5.17998C15.77 5.17998 18.82 8.22998 18.82 12C18.82 15.77 15.77 18.82 12 18.82Z" fill-rule="nonzero" ></path><path d="M12 6.02002C8.70996 6.02002 6.01996 8.70002 6.01996 12C6.01996 15.3 8.69996 17.98 12 17.98C15.3 17.98 17.98 15.3 17.98 12C17.98 8.70002 15.29 6.02002 12 6.02002ZM9.74996 15.4V8.60002L15.63 12L9.74996 15.4Z" fill-rule="nonzero" ></path></g></svg>`
     });
 
-    if ( !isValidUser ){
+    if ( !isValidUser() ){
         upgrade.className = "hide";
     }
 
     switch ( pageTitle ) {
         case "Home":
-            home.className = "active-page";
+            home.className += " active-page";
             break;
         case "Explore":
-            explore.className = "active-page";
+            explore.className += " active-page";
             break;
         case "library":
-            library.className = "active-page";
+            library.className += " active-page";
             break;
         case "upgrade":
-            upgrade.className = "active-page";
+            upgrade.className += " active-page";
             break;
         default:
-            home.className = "active-page";
+            home.className += " active-page";
     }
 
-    pages.append( home, explore, library, upgrade );
     const search = displaySearch();
 
-    pages.append( search )
+    pages.className = "pages flex";
+    container.className = "main-bar flex";
+
+    pages.append( home, explore, library, upgrade );
     container.append( pages, search );
     
     return container;
@@ -103,7 +108,7 @@ const displayUserIcon = () => {
         container.className = "nav-sign-in";
     } else {
         container.textContent = userName[0];
-        container.className = "nav-user";
+        container.className = "nav-user hover";
     }
     return container;
 }
@@ -111,7 +116,7 @@ const displayUserIcon = () => {
 const navbar = ( { pageTitle = "home" } ) => {
     const div = document.createElement("div");
     
-    div.className = "navbar";
+    div.className = "navbar flex";
 
     const icon =  displayIcon({});
     const mainBar = displayMainBar( pageTitle );
