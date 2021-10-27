@@ -4,6 +4,13 @@ const isValidUser = () => {
     return name;
 }
 
+const addNavbarStyling = () => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "../CSS file/navbar.css";
+    document.head.append(link);
+} 
+
 const displayIcon = ( { name="Music", target="./index.html", ImgSrc="https://music.youtube.com/img/on_platform_logo.svg" } ) => {
     const container = document.createElement("div");
     const text = document.createElement("h1");
@@ -162,6 +169,9 @@ const displayUserIcon = () => {
  * @returns 
  */
 const navbar = ( { pageTitle = "home" } ) => {
+    
+    addNavbarStyling();
+
     const div = document.createElement("div");
     
     div.className = "navbar flex";
@@ -183,7 +193,6 @@ const navbar = ( { pageTitle = "home" } ) => {
         }
     })
     
-    console.log(div);
     return div;
 }
 
