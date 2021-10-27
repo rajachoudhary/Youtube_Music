@@ -1,0 +1,72 @@
+* {
+  font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+#container {
+  width: 550px;
+  height: 550px;
+  margin: auto;
+  margin-top: 80px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 30px;
+  text-align: 30px;
+  border-radius: 5px;
+}
+#google {
+  height: 40px;
+  width: 80px;
+  border: 0;
+  /* margin-bottom: 20px; */
+}
+a {
+  text-decoration: none;
+}
+#email {
+  margin-top: 20px;
+  width: 400px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+#firstname,
+#lastname,
+#confirm,
+#pass {
+  height: 40px;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+#email + p {
+  font-size: 12px;
+  /* margin-left: -60px; */
+}
+#password {
+  margin-top: 30px;
+}
+#password > p {
+  font-size: 12px;
+}
+#foot {
+  margin-top: 30px;
+}
+#link {
+  float: left;
+}
+#register {
+  float: right;
+  margin-right: 130px;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: rgb(26, 115, 232);
+  border: none;
+  border-radius: 5px;
+  margin-top: -5px;
+}
