@@ -14,7 +14,7 @@
     left: 0;
     right: 0;
     color: #a3a3a3;
-    height: 3rem;
+    height: 5rem;
     max-width: 1920px;
     padding: 1rem 1.5rem;
 }
@@ -28,8 +28,9 @@
     width: 28rem;
 }
 .scroll {
-    animation: NavColor infinite ease-in-out 1s;
+    animation: NavColor ease-in-out 1s;
     background-color: black;
+    border-bottom: 0.25px solid #555353b2;
 }
 @keyframes NavColor {
     form {
@@ -41,6 +42,7 @@
 }
 .main-text {
     color: white;
+    letter-spacing: -2px;
     font-weight: 500;
     font-size: 1.8rem !important;
     margin: 0.5rem 0.25rem 0% !important;
@@ -61,19 +63,25 @@
     fill: #c3c3c3;
 }
 .nav-sign-in {
-    font-size: 1.25rem;
-    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    margin-top: -0.05rem;
+    border-radius: 0.2rem;
     background-color: rgb(255, 255, 255);
-    color: #030303;
+    color: #000000;
 }
 .nav-user {
     font-size: 1.75rem;
-    width: 1.75rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 3rem;
     margin-top: 0.25rem;
     padding: 0.25rem 0rem 0rem 0.6rem;
     border-radius: 50%;
     background-color: #00579C;
+}
+.nav-sign-in:hover {
+    cursor: pointer;
 }
 
 .active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {

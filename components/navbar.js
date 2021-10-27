@@ -154,8 +154,8 @@ const displayUserIcon = () => {
     const userName = isValidUser();
     if ( !userName ){
         container.textContent = "SIGN IN";
-        container.className = "nav-sign-in hover";
-        addLocationChanger(container, "./signIn.html")
+        container.className = "nav-sign-in";
+        addLocationChanger(container, "./login.html")
     } else {
         container.textContent = userName[0];
         container.className = "nav-user hover";
@@ -184,7 +184,7 @@ const navbar = ( { pageTitle = "home" } ) => {
     let flag = false;
 
     window.addEventListener("scroll", () => {
-        if ( scrollY > 100 ){
+        if ( scrollY > 10 ){
             document.getElementsByClassName("navbar")[0].classList.add("scroll");
             flag = true;
         } else if ( flag ) {
