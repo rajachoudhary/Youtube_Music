@@ -1,0 +1,158 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.hide {
+    display: none;
+}
+
+/* for whole navbar */
+.navbar{
+    font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #a3a3a3;
+    height: 3rem;
+    max-width: 1920px;
+    padding: 1rem 1.5rem;
+}
+.main-bar {
+    gap: 1%;
+    width: 40rem;
+}
+.pages {
+    max-width: 1rem;
+    gap: 2rem;
+    width: 28rem;
+}
+.scroll {
+    animation: NavColor infinite ease-in-out 1s;
+    background-color: black;
+}
+@keyframes NavColor {
+    form {
+        background-color: none;
+    }
+    to {
+        background-color: black;
+    }
+}
+.main-text {
+    color: white;
+    font-weight: 500;
+    font-size: 1.8rem !important;
+    margin: 0.5rem 0.25rem 0% !important;
+}
+.nav-text, .nav-search-text {
+    margin: 0.5rem 0.5rem 0%;
+}
+.nav-texts {
+    font-size: 1.45rem;
+    margin: 0.5rem;
+}
+/* icons */
+.nav-icons, .nav-md-logo {
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    display: block;
+    fill: #c3c3c3;
+}
+.nav-sign-in {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.5rem;
+    background-color: rgb(255, 255, 255);
+    color: #030303;
+}
+.nav-user {
+    font-size: 1.75rem;
+    width: 1.75rem;
+    height: 2rem;
+    margin-top: 0.25rem;
+    padding: 0.25rem 0rem 0rem 0.6rem;
+    border-radius: 50%;
+    background-color: #00579C;
+}
+
+.active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {
+    color: #f3f3f3;
+    cursor: pointer;
+    fill: white;
+}
+.nav-md-logo {
+    display: none;
+}
+
+.search-bar {
+    position: fixed;
+    left: 11rem;
+    top: 0.65rem;
+    width: 80%;
+    height: 2rem;
+    padding: 0.75rem 0.5rem 1rem;
+    max-width: 66rem;
+    background-color: #212121;
+    border: 0.25px solid black;
+}
+.search-bar > button {
+    background-color: initial;
+    border: none;
+    height: 2rem;
+    fill: white;
+}
+.search-bar > button:hover {
+    cursor: pointer;
+}
+.search-bar > input {
+    background-color: initial;
+    font-size: 2.5rem;
+    padding: 0rem 0.5rem;
+    width: 85%;
+    height: 2rem;
+    border: none;
+    color: white;
+}
+
+.search-bar > input:focus {
+    outline: none;
+}
+
+
+@media screen and ( max-width: 1100px ) {
+    .main-bar {
+        max-width: 21.5rem;
+    }
+    .pages {
+        gap: 1.5rem;
+        width: 20rem;
+    }
+    .nav-texts {
+        display: none !important;
+    }
+    .search-bar {
+        left: 5rem;
+    }
+    
+    .nav-icons, .nav-md-logo, .nav-search-text, .main-text {
+        display: block !important;
+    }
+}
+
+
+@media screen and ( max-width: 800px ) {
+    .main-bar {
+        max-width: 14rem;
+    }
+    .search-bar {
+        left: 3.75rem;
+    }
+    .pages {
+        gap: 1rem;
+        width: 14rem;
+    }
+    .nav-md-text, .nav-search-text, .main-text {
+        display: none !important;
+    }   
+}
