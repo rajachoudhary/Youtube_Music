@@ -150,7 +150,7 @@ const navbar = ( { pageTitle = "home" } ) => {
 
     const div = document.createElement("div");
     
-    div.className = "ytNavbar flex";
+    div.className = "navbar flex";
 
     const icon =  displayIcon({});
     const mainBar = displayMainBar( pageTitle );
