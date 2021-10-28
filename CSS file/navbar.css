@@ -6,8 +6,8 @@
     display: none;
 }
 
-/* for whole ytNavbar */
-.ytNavbar{
+/* for whole Navbar */
+.navbar{
     font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
     position: fixed;
     top: 0;

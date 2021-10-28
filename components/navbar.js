@@ -66,6 +66,7 @@ const displaySearch = () => {
     container.append( searchIcon, searchText );
     container.addEventListener("click", () => {
         displaySearchBar();
+        console.log("a")
     })
     return container;
 }
@@ -150,7 +151,7 @@ const navbar = ( { pageTitle = "home" } ) => {
 
     const div = document.createElement("div");
     
-    div.className = "ytNavbar flex";
+    div.className = "navbar flex";
 
     const icon =  displayIcon({});
     const mainBar = displayMainBar( pageTitle );
