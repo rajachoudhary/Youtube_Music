@@ -136,6 +136,7 @@
     left: 0rem;
     width: 100%;
     display: none;
+    z-index: 1020;
     border-top: 1px solid #555353b2 ;
     background-color: #212121;
 }

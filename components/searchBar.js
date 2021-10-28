@@ -94,7 +94,7 @@ const displaySearchBar = () => {
         } else if ( event.target.className == "suggest-text"){
             const input = document.getElementsByClassName("search-bar")[0].querySelector("input");
             input.value = event.target.textContent;
-            localStorage.setItem("q", input);
+            localStorage.setItem("q", input.value);
             window.location.href = "./search.html";
         }
     });

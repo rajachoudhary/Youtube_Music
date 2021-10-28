@@ -3,13 +3,14 @@
     top: 5rem;
     left: 10rem;
     width: 85%;
-    z-index: 101;
+    z-index: 1;
     border-bottom: 0.25px solid #a3a3a3;    
 }
 #top-options {
     color: #b3b3b3;
     padding: 1rem 1rem 0rem;
     font-size: 1.5rem;
+    z-index: -10;
     display: flex;
     gap: 3rem;
 }
