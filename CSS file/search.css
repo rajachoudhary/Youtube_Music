@@ -50,9 +50,9 @@
     height: 4rem;
     margin-right: 1rem;
 }
-.detail-card > h1 {
+.detail-card h1 {
     margin-top: 0;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 .search-heading {
     font-size: 3rem;
@@ -62,7 +62,8 @@
     margin: 1rem 1rem 2rem;
 }
 .subhead {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 /* loading */
 #loading {

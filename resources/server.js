@@ -9,7 +9,6 @@ api.initalize().then( info => {
 
     // for searching keywords in searchbar
     app.get("/suggestions/:keyword", (req, res) => {
-        console.log(req.params)
         api.getSearchSuggestions(req.params.keyword).then(result => {
             res.send(result)
         })    
@@ -42,6 +41,6 @@ api.initalize().then( info => {
     });
 
     app.listen(port, () => {
-        console.log(`Example app listening at http://localhost:${port}`)
+        console.log(`Server is running at http://localhost:${port}`)
     })
 });
