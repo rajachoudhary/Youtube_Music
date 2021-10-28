@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Kundan",
+      "lastName": "Chaudhary",
+      "emailId": "kundanchoudhary00@gmail.com",
+      "password": "kundan@123"
+    },
+    {
+      "firstName": "Vikash",
+      "lastName": "Choubey",
+      "emailId": "vikash96@gmail.com",
+      "password": "vikash123",
+      "id": 2
+    },
+    {
+      "firstName": "Raja",
+      "lastName": "Choudhary",
+      "emailId": "raja86@gmail.com",
+      "password": "123",
+      "id": 3
+    }
+  ]
+}
