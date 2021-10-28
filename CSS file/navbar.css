@@ -95,10 +95,10 @@
 
 .search-bar {
     position: fixed;
-    left: 11rem;
+    left: 14rem;
     top: 0.65rem;
     width: 80%;
-    height: 2rem;
+    height: 3.75rem;
     padding: 0.75rem 0.5rem 1rem;
     max-width: 66rem;
     background-color: #212121;
@@ -115,9 +115,9 @@
 }
 .search-bar > input {
     background-color: initial;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     padding: 0rem 0.5rem;
-    width: 85%;
+    width: 94%;
     height: 2rem;
     border: none;
     color: white;
@@ -126,6 +126,35 @@
 .search-bar > input:focus {
     outline: none;
 }
+
+#suggestions {
+    position: absolute;
+    padding: 0.3rem 0rem;
+    top: 3.68rem;
+    left: 0rem;
+    width: 100%;
+    display: none;
+    border-top: 1px solid #555353b2 ;
+    background-color: #212121;
+}
+.suggest {
+    padding: 1rem 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    fill: #c3c3c3;
+}
+.suggest > div {
+    height: 2rem;
+    font-size: 1.25rem;
+}
+.suggest:hover {
+    cursor: pointer;
+    background: #f3f3f32e;
+}
+.suggest-text {
+    width: 100%;
+}
+
 
 
 @media screen and ( max-width: 1100px ) {
@@ -140,7 +169,7 @@
         display: none !important;
     }
     .search-bar {
-        left: 5rem;
+        left: 7rem;
     }
     
     .nav-icons, .nav-md-logo, .nav-search-text, .main-text {
@@ -154,7 +183,7 @@
         max-width: 14rem;
     }
     .search-bar {
-        left: 3.75rem;
+        left: 5rem;
     }
     .pages {
         gap: 1rem;
