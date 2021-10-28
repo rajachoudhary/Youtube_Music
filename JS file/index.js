@@ -1,5 +1,4 @@
-import navbar from "../components/navbar.js"
+import navbar from "../components/navbar.js";
 
 window.addEventListener("load", () => {
-    document.body.append(navbar({ pageTitle: "Home" }))
-})
+    document.body.querySelector("nav").append(navbar({ pageTitle: "Home" }))
