@@ -17,6 +17,7 @@
     height: 5rem;
     max-width: 1920px;
     padding: 1rem 1.5rem;
+    z-index: 100;
 }
 .main-bar {
     gap: 1%;
@@ -28,8 +29,9 @@
     width: 28rem;
 }
 .scroll {
-    animation: NavColor infinite ease-in-out 1s;
+    animation: NavColor ease-in-out 1s;
     background-color: black;
+    border-bottom: 0.25px solid #555353b2;
 }
 @keyframes NavColor {
     form {
@@ -42,9 +44,10 @@
 .main-text {
     letter-spacing: -2px;
     color: white;
+    letter-spacing: -2px;
     font-weight: 500;
     font-size: 1.8rem !important;
-    margin: 0.5rem 0.25rem 0% !important;
+    margin: 0.3rem 0.25rem 0% !important;
 }
 .nav-text, .nav-search-text {
     margin: 0.5rem 0.5rem 0%;
@@ -55,17 +58,20 @@
 }
 /* icons */
 .nav-icons, .nav-md-logo {
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     height: 2rem;
     width: 2rem;
     display: block;
     fill: #c3c3c3;
 }
 .nav-sign-in {
-    font-size: 1.25rem;
-    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    margin-top: -0.05rem;
+    border-radius: 0.2rem;
     background-color: rgb(255, 255, 255);
-    color: #030303;
+    color: #000000;
 }
 .nav-user {
     font-size: 1.75rem;
@@ -75,6 +81,9 @@
     padding: 0.25rem 0rem 0rem 0.6rem;
     border-radius: 50%;
     background-color: #00579C;
+}
+.nav-sign-in:hover {
+    cursor: pointer;
 }
 
 .active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {
@@ -86,12 +95,13 @@
     display: none;
 }
 
+/* Search bar styling */
 .search-bar {
     position: fixed;
-    left: 11rem;
+    left: 14rem;
     top: 0.65rem;
     width: 80%;
-    height: 2rem;
+    height: 3.75rem;
     padding: 0.75rem 0.5rem 1rem;
     max-width: 66rem;
     background-color: #212121;
@@ -108,16 +118,45 @@
 }
 .search-bar > input {
     background-color: initial;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     padding: 0rem 0.5rem;
-    width: 85%;
+    width: 94%;
     height: 2rem;
     border: none;
     color: white;
 }
-
 .search-bar > input:focus {
     outline: none;
+}
+
+/* Suggestions */
+#suggestions {
+    position: absolute;
+    padding: 0.3rem 0rem;
+    top: 3.68rem;
+    left: 0rem;
+    width: 100%;
+    display: none;
+    z-index: 1020;
+    border-top: 1px solid #555353b2 ;
+    background-color: #212121;
+}
+.suggest {
+    padding: 1rem 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    fill: #c3c3c3;
+}
+.suggest > div {
+    height: 2rem;
+    font-size: 1.25rem;
+}
+.suggest:hover {
+    cursor: pointer;
+    background: #f3f3f32e;
+}
+.suggest-text {
+    width: 100%;
 }
 
 
@@ -133,7 +172,7 @@
         display: none !important;
     }
     .search-bar {
-        left: 5rem;
+        left: 7rem;
     }
     
     .nav-icons, .nav-md-logo, .nav-search-text, .main-text {
@@ -147,7 +186,7 @@
         max-width: 14rem;
     }
     .search-bar {
-        left: 3.75rem;
+        left: 5rem;
     }
     .pages {
         gap: 1rem;

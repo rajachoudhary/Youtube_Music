@@ -1,4 +1,5 @@
-// change Line 120 with signin page html
+import displaySearchBar from "./searchBar.js";
+
 const isValidUser = () => {
     const name = localStorage.getItem("Name");
     return name;
@@ -6,9 +7,14 @@ const isValidUser = () => {
 
 const addNavbarStyling = () => {
     const link = document.createElement("link");
+    const link2 = document.createElement("link");
+    
     link.rel = "stylesheet";
     link.href = "../CSS file/navbar.css";
-    document.head.append(link);
+    link2.rel = "stylesheet";
+    link2.href = "../CSS file/loadingIndicator.css";
+    
+    document.head.append(link, link2);
 } 
 
 const displayIcon = ( { name="Music", target="./index.html", ImgSrc="https://music.youtube.com/img/on_platform_logo.svg" } ) => {
@@ -39,32 +45,10 @@ const displayIcon = ( { name="Music", target="./index.html", ImgSrc="https://mus
     return container;
 }
 
-const displaySearchBar = () => {
-    let searchBar = document.getElementsByClassName("search-bar");
-    if ( searchBar[0] ){
-        searchBar[0].style.display = "block";
-        return;
-    }
-    const container = document.getElementsByClassName("navbar")[0];
-    const searchBa = document.createElement("div");
-    const backBtn = document.createElement("button");
-    const input = document.createElement("input");
-
-    backBtn.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g mirror-in-rtl="" ><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></g></svg>'
-    backBtn.value = "back";
-    input.placeholder = "Search";
-
-    searchBa.className = "flex search-bar";
-    searchBa.append( backBtn, input );
-    
-    container.addEventListener("click", () => {
-        if ( event.target.value == "back" ){
-            const searchb = document.getElementsByClassName("search-bar")[0];
-            searchb.style.display = "none";
-        }
+const addLocationChanger = (target, location) => {
+    target.addEventListener("click", ()=>{
+        window.location.href = location;
     })
-
-    container.append( searchBa );
 }
 
 const displaySearch = () => {
@@ -84,12 +68,6 @@ const displaySearch = () => {
         displaySearchBar();
     })
     return container;
-}
-
-const addLocationChanger = (target, location) => {
-    target.addEventListener("click", ()=>{
-        window.location.href = location;
-    })
 }
 
 
@@ -135,8 +113,6 @@ const displayMainBar = ( pageTitle ) => {
         case "Upgrade":
             upgrade.className += " active-page";
             break;
-        default:
-            home.className += " active-page";
     }
 
     const search = displaySearch();
@@ -154,8 +130,8 @@ const displayUserIcon = () => {
     const userName = isValidUser();
     if ( !userName ){
         container.textContent = "SIGN IN";
-        container.className = "nav-sign-in hover";
-        addLocationChanger(container, "./signIn.html")
+        container.className = "nav-sign-in";
+        addLocationChanger(container, "./login.html")
     } else {
         container.textContent = userName[0];
         container.className = "nav-user hover";
@@ -184,7 +160,7 @@ const navbar = ( { pageTitle = "home" } ) => {
     let flag = false;
 
     window.addEventListener("scroll", () => {
-        if ( scrollY > 100 ){
+        if ( scrollY > 10 ){
             document.getElementsByClassName("navbar")[0].classList.add("scroll");
             flag = true;
         } else if ( flag ) {
