@@ -69,3 +69,21 @@
 #loading {
     margin-top: 50rem;
 }
+
+@media screen and ( max-width: 1100px ) {
+    #results {
+        padding-left: 5rem;
+    }
+    #top-header {
+        left: 5rem;
+    }
+}
+
+@media screen and ( max-width:700px) {
+    #results {
+        padding-left: 2rem;
+    }
+    #top-header {
+        left: 2rem;
+    }    
+}
