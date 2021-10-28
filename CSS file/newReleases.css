@@ -1,0 +1,46 @@
+* {
+  /* background-color: black; */
+  /* color: white; */
+  font-family: Georgia, "Times New Roman", Times, serif;
+  cursor: pointer;
+}
+
+.slider {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 260px);
+  gap: 20px;
+}
+.divsongs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px;
+  padding: 5px;
+}
+.whiteLine {
+  height: 0.5px;
+  width: 100%;
+  background-color: white;
+  margin-top: -20px;
+}
+#rightBtnImg,
+#leftBtnImg {
+  height: 40px;
+  width: 40px;
+}
+#rightBtn {
+  position: absolute;
+  margin-top: -220px;
+  margin-left: 175px;
+}
+#leftBtnImg {
+  position: absolute;
+  margin-top: -220px;
+  margin-left: -5px;
+}
+.afterClick {
+  background-color: black;
+  color: white;
+  font-family: monospace;
+}
