@@ -66,7 +66,6 @@ const displaySearch = () => {
     container.append( searchIcon, searchText );
     container.addEventListener("click", () => {
         displaySearchBar();
-        console.log("a")
     })
     return container;
 }
