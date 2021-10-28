@@ -7,9 +7,14 @@ const isValidUser = () => {
 
 const addNavbarStyling = () => {
     const link = document.createElement("link");
+    const link2 = document.createElement("link");
+    
     link.rel = "stylesheet";
     link.href = "../CSS file/navbar.css";
-    document.head.append(link);
+    link2.rel = "stylesheet";
+    link2.href = "../CSS file/loadingIndicator.css";
+    
+    document.head.append(link, link2);
 } 
 
 const displayIcon = ( { name="Music", target="./index.html", ImgSrc="https://music.youtube.com/img/on_platform_logo.svg" } ) => {
@@ -108,8 +113,6 @@ const displayMainBar = ( pageTitle ) => {
         case "Upgrade":
             upgrade.className += " active-page";
             break;
-        default:
-            home.className += " active-page";
     }
 
     const search = displaySearch();

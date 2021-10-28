@@ -17,6 +17,7 @@
     height: 5rem;
     max-width: 1920px;
     padding: 1rem 1.5rem;
+    z-index: 100;
 }
 .main-bar {
     gap: 1%;
@@ -45,7 +46,7 @@
     letter-spacing: -2px;
     font-weight: 500;
     font-size: 1.8rem !important;
-    margin: 0.5rem 0.25rem 0% !important;
+    margin: 0.3rem 0.25rem 0% !important;
 }
 .nav-text, .nav-search-text {
     margin: 0.5rem 0.5rem 0%;
@@ -56,7 +57,7 @@
 }
 /* icons */
 .nav-icons, .nav-md-logo {
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     height: 2rem;
     width: 2rem;
     display: block;
@@ -93,6 +94,7 @@
     display: none;
 }
 
+/* Search bar styling */
 .search-bar {
     position: fixed;
     left: 14rem;
@@ -122,11 +124,11 @@
     border: none;
     color: white;
 }
-
 .search-bar > input:focus {
     outline: none;
 }
 
+/* Suggestions */
 #suggestions {
     position: absolute;
     padding: 0.3rem 0rem;
@@ -154,7 +156,6 @@
 .suggest-text {
     width: 100%;
 }
-
 
 
 @media screen and ( max-width: 1100px ) {

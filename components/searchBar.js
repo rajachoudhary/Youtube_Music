@@ -4,21 +4,16 @@ const fetchSuggestions = (q) => {
         .then( res => res.json() ) 
 }
 
-const fetchTypeResults = (type, query) => {
-    const url = `http://localhost:3002/search/type/${query}`;
-    return fetch( url )
-        .then( res => res.json() )
-}
-
-const suggestionDebouncer = () => {
+const debouncer = (fun, delay) => {
     let id;
     return () => {
         id && clearTimeout(id);
         id = setTimeout( () => {
-            displaySuggestion();
-        }, 400 )
+            fun();
+        }, delay )
     }
 }
+
 
 const createSuggestCard = (item) => {
     const suggestElem = document.createElement("div");
@@ -57,6 +52,20 @@ const displaySuggestion = async () => {
     }
 }
 
+const suggestionDebouncer = debouncer( displaySuggestion, 300 );
+
+const handleInput = () => {
+    if ( event.code == "Enter" ){
+        const q = document.getElementsByClassName("search-bar")[0].querySelector("input").value;;
+        localStorage.setItem("q", q);
+        window.location.href = "./search.html";
+        event.stopImmediatePropagation();
+    } else {
+        suggestionDebouncer();
+    }
+}
+
+
 const displaySearchBar = () => {
     let searchBar = document.getElementsByClassName("search-bar");
     if ( searchBar[0] ){
@@ -85,16 +94,12 @@ const displaySearchBar = () => {
         } else if ( event.target.className == "suggest-text"){
             const input = document.getElementsByClassName("search-bar")[0].querySelector("input");
             input.value = event.target.textContent;
-        }
-    });
-
-    container.addEventListener("keydown", function (e) {
-        if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
-            handleSearch();
+            localStorage.setItem("q", input);
+            window.location.href = "./search.html";
         }
     });
     
-    input.onkeyup = suggestionDebouncer();
+    input.addEventListener( "keyup", handleInput);
 
     container.append( searchBa );
 }
