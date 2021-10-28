@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+}
+#index1stContainer{
+    padding-top: 100px;
+    margin: auto;
+    justify-content: center  ;
+}
+
+.urlspace{
+    /* --bs-gutter-x: 0rem */
+    width: 18%;
+}
+
+.row{
+    padding-right: calc(var(--bs-gutter-x) * .0);
+    padding-left: calc(var(--bs-gutter-x) * .0);
+}
