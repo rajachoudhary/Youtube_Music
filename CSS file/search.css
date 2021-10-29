@@ -36,14 +36,20 @@
     height: initial;
     background-color: #000000;
 }
+.search-heading {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
 .detail-card {
     width: 80%;
     display: flex;
     margin-top: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 0.25px solid #737373;
 }
-.detail-card:hover, .search-heading:hover, .subhead:hover {
+.detail-meta:hover, .search-heading:hover, .subhead:hover {
     cursor: pointer;
+    color: #939393;
 }
 .detail-card > img {
     width: 4rem;
@@ -53,10 +59,6 @@
 .detail-card h1 {
     margin-top: 0;
     font-size: 1.5rem;
-}
-.search-heading {
-    font-size: 3rem;
-    margin-bottom: 2rem;
 }
 .item-details {
     margin: 1rem 1rem 2rem;
@@ -68,6 +70,19 @@
 /* loading */
 #loading {
     margin-top: 50rem;
+}
+
+/* details */
+.detail-footer{
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    font-size: 0.35rem;
+}
+/* artist */
+.artist {
+    border-radius: 50%;
+    margin-bottom: 1rem;
 }
 
 @media screen and ( max-width: 1100px ) {

@@ -100,6 +100,8 @@ const displayMainBar = ( pageTitle ) => {
         upgrade.className = "hide";
     }
 
+    let mainPage = true;
+
     switch ( pageTitle ) {
         case "Home":
             home.className += " active-page";
@@ -113,6 +115,13 @@ const displayMainBar = ( pageTitle ) => {
         case "Upgrade":
             upgrade.className += " active-page";
             break;
+        default:
+            mainPage = false;
+            break; 
+    }
+
+    if ( mainPage ){
+        localStorage.removeItem("q");
     }
 
     const search = displaySearch();
