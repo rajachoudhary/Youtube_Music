@@ -76,9 +76,8 @@
 .nav-user {
     font-size: 1.75rem;
     width: 2.5rem;
-    height: 3rem;
-    margin-top: 0.25rem;
-    padding: 0.25rem 0rem 0rem 0.6rem;
+    height: 2.5rem;
+    padding: 0rem 0rem 0rem 0.6rem;
     border-radius: 50%;
     background-color: #00579C;
 }

@@ -142,7 +142,7 @@ const displayUserIcon = () => {
         container.className = "nav-sign-in";
         addLocationChanger(container, "./login.html")
     } else {
-        container.textContent = userName[0];
+        container.textContent = userName[1];
         container.className = "nav-user hover";
     }
     return container;

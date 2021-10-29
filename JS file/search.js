@@ -4,9 +4,10 @@ import loadingIndicator from "../components/loadingIndicator.js";
 
 // Variable to store data
 const global = {
-    song:null, 
-    artist:null,
-    playlist:null
+    song: null, 
+    artist: null,
+    playlist: null,
+    video: null
 }
 
 const fetchTypeResults = (type, query) => {
@@ -113,6 +114,7 @@ const displayResults = async ( input ) => {
 
         await displaydetailsType( "playlist", input );
         await displaydetailsType( "artist", input );
+        await displaydetailsType( "video", input );
     } catch ( err ) {
         console.log(err);
     }
@@ -130,6 +132,37 @@ const handleSearch = async () => {
     
 }
 
+const clickHandler = (event) => {
+    const tarClass = event.target.classList;
+    if ( tarClass[0] ){
+        const target = tarClass[0].toLowerCase();
+        if ( tarClass[2] == "close" ){
+            displaydetails(global[target].content, target, false);
+        } else if ( tarClass[1] == "subhead" ){
+            displaydetails(global[target].content, target, true);
+        } else if ( tarClass[0] === "search-heading"){
+            const tar = event.target.textContent.toLowerCase();
+            displaydetails(global[tar].content, tar, true);
+        } else if ( tarClass[0] == "tab" ){
+            const name = event.target.textContent.toLowerCase();
+            const libraryElem = document.getElementById("library");
+            const resultElem = document.getElementById("results");
+            const tabs = document.getElementsByClassName("tab");
+            if ( name == "library" ){
+                resultElem.style.display = "none";
+                libraryElem.style.display = "block";
+                tabs[0].classList.remove("active");
+                tabs[1].classList.add("active");
+            } else {
+                resultElem.style.display = "block";
+                libraryElem.style.display = "none";
+                tabs[0].classList.add("active");
+                tabs[1].classList.remove("active");
+            }
+        }
+    }
+}
+
 window.addEventListener("load", () => {
     if ( !localStorage.getItem("q") ){
         window.location.href = "./index.html";
@@ -140,17 +173,6 @@ window.addEventListener("load", () => {
     input.value = localStorage.getItem("q");
     handleSearch();
     document.body.addEventListener("click", () => {
-        const tarClass = event.target.classList;
-        if ( tarClass[0] ){
-            const target = tarClass[0].toLowerCase();
-            if ( tarClass[2] == "close" ){
-                displaydetails(global[target].content, target, false);
-            } else if ( tarClass[1] == "subhead" ){
-                displaydetails(global[target].content, target, true);
-            } else if ( tarClass[0] === "search-heading"){
-                const tar = event.target.textContent.toLowerCase();
-                displaydetails(global[tar].content, tar, true);
-            }
-        } 
+        clickHandler(event); 
     })
 })

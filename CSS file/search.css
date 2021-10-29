@@ -1,3 +1,4 @@
+/* top texts */
 #top-header {
     position: fixed;
     top: 5rem;
@@ -27,7 +28,7 @@
 #results {
     color: white;
     position: absolute;
-    top: 8rem;
+    top: 7rem;
     left: 0;
     right: 0;
     padding-top: 3rem;
@@ -47,7 +48,7 @@
     padding-bottom: 0.5rem;
     border-bottom: 0.25px solid #737373;
 }
-.detail-meta:hover, .search-heading:hover, .subhead:hover {
+.detail-meta > h1:hover, .detail-meta h6:hover, img:hover, .search-heading:hover, .subhead:hover {
     cursor: pointer;
     color: #939393;
 }
@@ -57,7 +58,7 @@
     margin-right: 1rem;
 }
 .detail-card h1 {
-    margin-top: 0;
+    margin-top: -0.3rem;
     font-size: 1.5rem;
 }
 .item-details {
@@ -85,6 +86,15 @@
     margin-bottom: 1rem;
 }
 
+/* library */
+#library {
+    padding-top: 30vh;
+    width: 70vw;
+    height: 70vh;
+    margin: auto;
+    fill: #b3b3b3;
+    text-align: center;
+}
 @media screen and ( max-width: 1100px ) {
     #results {
         padding-left: 5rem;
