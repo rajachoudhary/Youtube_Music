@@ -56,7 +56,10 @@ const suggestionDebouncer = debouncer( displaySuggestion, 300 );
 
 const handleInput = () => {
     if ( event.code == "Enter" ){
-        const q = document.getElementsByClassName("search-bar")[0].querySelector("input").value;;
+        const q = document.getElementsByClassName("search-bar")[0].querySelector("input").value;
+        if ( q.length < 1 ){
+            return;
+        }
         localStorage.setItem("q", q);
         window.location.href = "./search.html";
         event.stopImmediatePropagation();
