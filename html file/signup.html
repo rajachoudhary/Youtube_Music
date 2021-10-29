@@ -20,14 +20,27 @@
       <h3>Create your Google Account</h3>
       <p>to continue to YouTube</p>
       <div id="name">
-        <input type="text" placeholder="First name" id="firstname" required />
-        <input type="text" placeholder="Last name" id="lastname" required />
+        <input
+          type="text"
+          placeholder="First name"
+          id="firstname"
+          spellcheck="false"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Last name"
+          id="lastname"
+          spellcheck="false"
+          required
+        />
       </div>
       <div>
         <input
           type="email"
           placeholder="Your email address"
           id="email"
+          spellcheck="false"
           required
         />
         <p>You'll need to confirm that this email belongs to you.</p>
@@ -44,7 +57,8 @@
         <p>
           Use 8 or more characters with a mix of letters, numbers & symbols.
         </p>
-        <input type="checkbox" />Show password
+        <br />
+        <input type="checkbox" id="showPassword" />Show password
       </div>
       <div id="foot">
         <a href="../html file/login.html" id="link">Sign in instead</a>
