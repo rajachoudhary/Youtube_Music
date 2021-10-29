@@ -59,3 +59,12 @@ a {
   margin-top: -5px;
   border: none;
 }
+#showDiv {
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+  float: left;
+}
+#showDiv + p {
+  clear: both;
+}

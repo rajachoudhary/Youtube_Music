@@ -119,7 +119,7 @@ function showContainer(container)
      let getPlaylist = await relatedSongs.json();
      let content = getPlaylist.content;
      console.log(getPlaylist);
-     let previousLayout = document.getElementById("container");
+     let previousLayout = document.getElementsByTagName("main")[0];
      previousLayout.style.display = "none";
 
      let playlistDisplay = document.createElement("div");
