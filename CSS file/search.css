@@ -52,6 +52,9 @@
     cursor: pointer;
     color: #939393;
 }
+.add:hover, .add-small:hover {
+    cursor: pointer;
+}
 .detail-meta h6:hover {
     text-decoration: underline;
 }
@@ -61,6 +64,9 @@
     margin-right: 1rem;
 }
 .detail-card h1 {
+    height: 2rem;
+    max-width: 50rem;
+    overflow: hidden;
     margin-top: -0.3rem;
     font-size: 1.5rem;
 }
@@ -89,6 +95,40 @@
     margin-bottom: 1rem;
 }
 
+/* overlay */
+.img-over {
+    left: -5rem;
+    width: 1rem;
+}
+.img-over > svg {
+    position: relative;
+    top: 0rem;
+    left: -5rem;
+    height: 4rem;
+    width: 4rem;
+    display: none;
+    background: #00000091;
+}
+.detail-card:hover > .img-over > svg, .detail-card:hover > .add {
+    display: block;
+}
+.add-small {
+    display: none;
+}
+.add, .add-small {
+    display: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+    height: 3rem;
+    position: absolute;
+    right: 20rem;
+    padding: 0.5rem 0.75rem 0.5rem;
+    margin-top: -0.05rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
 /* library */
 #library {
     padding-top: 30vh;
@@ -105,6 +145,16 @@
     #top-header {
         left: 5rem;
     }
+    .add-small {
+        display: block;
+        right: 12rem;
+    }
+    .detail-card:hover > .add-small {
+        display: block;
+    }
+    .detail-card h1 {
+        max-width: 35rem;
+    }
 }
 
 @media screen and ( max-width:700px) {
@@ -114,4 +164,11 @@
     #top-header {
         left: 2rem;
     }    
+    .add-small {
+        display: block;
+        right: 8rem;
+    }
+    .detail-card h1 {
+        max-width: 20rem;
+    }
 }

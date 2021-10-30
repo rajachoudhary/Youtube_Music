@@ -22,9 +22,9 @@
       "id": 3
     },
     {
-      "firstName": "ravi ",
-      "lastName": "shukhla",
-      "emailId": "ravi25@gmail.com",
+      "firstName": "Ravi ",
+      "lastName": "shukla",
+      "emailId": "ravi@gmail.com",
       "password": "123",
       "id": 4
     },
@@ -34,6 +34,15 @@
       "emailId": "sachin10@gmail.com",
       "password": "sachin123",
       "id": 5
+    },
+    {
+      "firstName": "Ravi",
+      "lastName": "Shukla",
+      "emailId": "rshuklabbb@gmail.com",
+      "password": "123",
+      "id": 6
     }
+  ],
+  "library": [
   ]
 }

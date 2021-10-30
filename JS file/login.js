@@ -11,7 +11,7 @@ async function login()
             if (res[0].password == password)
             {
                 alert("Login successfully");
-                localStorage.setItem('Name', JSON.stringify(res[0].firstName));
+                localStorage.setItem('User', JSON.stringify(res[0]));
                 console.log(res[0].firstName);
                 document.getElementById("email").value = "";
                 document.getElementById("pass").value = "";

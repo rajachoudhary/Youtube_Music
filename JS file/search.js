@@ -2,19 +2,44 @@ import navbar from "../components/navbar.js";
 import displaySearchBar from "../components/searchBar.js";
 import loadingIndicator from "../components/loadingIndicator.js";
 
-// Variable to store data
-const global = {
+// Variables to store data
+let searchResults = {
     song: null, 
     artist: null,
     playlist: null,
     video: null
 }
 
-// to store localplaylist
-// create function shows options on hover
-// create function to show add to library option on click
-// store to localstorage
+let userLibrary = {
+    song:[],
+    playlist: [],
+    artist: [],
+    video: []
+}
 
+const fetchLibrary = (id) => {
+    const url = `http://localhost:3000/library?parentId=${id}`;
+    return fetch( url )
+        .then( res => res.json() )
+}
+
+const updateLibrary = (id, payload) => {
+    let methodP = "POST";
+    let url = `http://localhost:3000/library`;
+    if ( payload.id ){
+        methodP = "PUT";
+        url += `/${payload.id}`;
+    }
+    const config = {
+        method: methodP,
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(payload)
+    }
+    return fetch( url, config )
+        .then( res => res.json())
+}
 
 const fetchTypeResults = (type, query) => {
     const url = `http://localhost:3002/search/${type}/${query}`;
@@ -49,7 +74,7 @@ const createCard = ( data ) => {
     
     container.id = data.browseId;
         
-    container.className = "detail-card";
+    container.className = "detail-card " + type.textContent;
     meta.className = "detail-meta";
     footer.className = "detail-footer";
 
@@ -59,6 +84,8 @@ const createCard = ( data ) => {
                 artist.textContent = data.album.name;
                 artist.id = data.album.browseId;
             }
+        case "video":
+            artist.id = data.playlistId
             container.id = data.videoId;
             break;
         case "artist":
@@ -68,10 +95,21 @@ const createCard = ( data ) => {
             title.textContent = data.title;
             break;
     }
+    const imgOver = document.createElement("div");
+    const add = document.createElement("div");
+    const addSmall = document.createElement("div");
+
+    imgOver.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>';
+    add.textContent = "Add to Library";
+    addSmall.textContent = "+";
+
+    imgOver.className = "img-over";
+    add.className = "add";
+    addSmall.className = "add-small";
 
     footer.append( type, artist );
     meta.append( title, footer );
-    container.append( img, meta );
+    container.append( img, imgOver, meta, add, addSmall );
     return container;
 }
 
@@ -107,9 +145,13 @@ const displaydetails = (data, target, k) => {
 }
 
 const displaydetailsType = async ( type, input ) => {
-    const data = await fetchTypeResults( type, input );
-    global[type] = data;
-    displaydetails( data.content, type );
+    try {
+        const data = await fetchTypeResults( type, input );
+        searchResults[type] = data;
+        displaydetails( data.content, type );    
+    } catch ( err ) {
+        console.log(err);
+    }
 }
 
 const displayResults = async ( input ) => {
@@ -120,10 +162,10 @@ const displayResults = async ( input ) => {
         await displaydetailsType( "playlist", input );
         await displaydetailsType( "artist", input );
         await displaydetailsType( "video", input );
+
     } catch ( err ) {
         console.log(err);
     }
-    
 }
 
 const handleSearch = async () => {
@@ -133,26 +175,58 @@ const handleSearch = async () => {
         await displayResults(input);
     } catch ( err ) {
         console.log( err )
+    }    
+}
+
+const addToLibrary = async (target) => {
+    try {
+        const category = target.classList[1].toLowerCase();
+        const id = target.id;
+        const data = searchResults[category].content;
+        for ( const res of userLibrary[category] ){
+            if ( id == res.browseId || id == res.videoId ){
+                console.log("match");
+                return;
+            }
+        }
+        for ( const d of data ){
+            if ( id == d.browseId || id == d.videoId ){
+
+                userLibrary[category].push(d);
+                const parentId = JSON.parse(localStorage.getItem("User")).id;
+                const payload = {
+                    "id": userLibrary.id,
+                    "parentId": parentId,
+                    "songs": userLibrary["song"],
+                    "artists": userLibrary["artist"],
+                    "playlists": userLibrary["playlist"],
+                    "videos": userLibrary["video"]
+                }
+                await updateLibrary(parentId, payload);
+            }
+        }
+    } catch ( err ) {
+        console.log(err);
     }
-    
 }
 
 const clickHandler = (event) => {
+    event.preventDefault();
     const tarClass = event.target.classList;
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
         if ( tarClass[2] == "close" ){
-            displaydetails(global[target].content, target, false);
+            displaydetails(searchResults[target].content, target, false);
             document.getElementById("results").style.display = "block";
             document.getElementById("details-view").style.display = "none";
         } else if ( tarClass[1] == "subhead" ){
-            displaydetails(global[target].content, "details-view", true);
+            displaydetails(searchResults[target].content, "details-view", true);
             document.getElementById("details-view").style.display = "block";
             document.getElementById("results").style.display = "none";
             document.getElementById("library").style.display = "none";
         } else if ( tarClass[0] === "search-heading"){
             const tar = event.target.textContent.toLowerCase();
-            displaydetails(global[tar].content, tar, true);
+            displaydetails(searchResults[tar].content, tar, true);
         } else if ( tarClass[0] == "tab" ){
             const name = event.target.textContent.toLowerCase();
             const libraryElem = document.getElementById("library");
@@ -170,20 +244,50 @@ const clickHandler = (event) => {
                 tabs[0].classList.add("active");
                 tabs[1].classList.remove("active");
             }
+        } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
+            const target = event.target.parentElement;
+            addToLibrary(target).then( res => console.log(res))
         }
     }
+}
+
+// handle load
+const loadPlaylist = async () => {
+    try {
+        const id = JSON.parse(localStorage.getItem("User")).id;
+        let lib = await fetchLibrary(id);
+        lib = lib[0];
+        if ( lib ){
+            userLibrary = {
+                id: lib.id,
+                parentId: lib.parentId,
+                song: lib.songs,
+                playlist: lib.playlists,
+                artist: lib.artists,
+                video: lib.videos
+            }
+        }
+    } catch ( err ) {
+        console.log(err);
+    }
+}
+
+const handleLoad = () => {
+    document.body.querySelector("nav").append(navbar({ pageTitle: "search" }));
+    displaySearchBar();
+    const input = document.getElementsByClassName("search-bar")[0].querySelector("input");
+    input.value = localStorage.getItem("q");
+    handleSearch();
 }
 
 window.addEventListener("load", () => {
     if ( !localStorage.getItem("q") ){
         window.location.href = "./index.html";
     }
-    document.body.querySelector("nav").append(navbar({ pageTitle: "search" }));
-    displaySearchBar();
-    const input = document.getElementsByClassName("search-bar")[0].querySelector("input");
-    input.value = localStorage.getItem("q");
-    handleSearch();
-    document.body.addEventListener("click", () => {
+    handleLoad();
+    loadPlaylist();
+    document.body.addEventListener("click", (event) => {
+        event.preventDefault();
         clickHandler(event); 
-    })
+    });
 })
