@@ -1,7 +1,7 @@
 import displaySearchBar from "./searchBar.js";
 
 const isValidUser = () => {
-    const name = localStorage.getItem("Name");
+    const name = JSON.parse( localStorage.getItem("Name") );
     return name;
 }
 
@@ -142,7 +142,7 @@ const displayUserIcon = () => {
         container.className = "nav-sign-in";
         addLocationChanger(container, "./login.html")
     } else {
-        container.textContent = userName[1];
+        container.textContent = userName[0];
         container.className = "nav-user hover";
     }
     return container;

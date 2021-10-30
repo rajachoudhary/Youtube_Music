@@ -10,6 +10,12 @@ const global = {
     video: null
 }
 
+// to store localplaylist
+// create function shows options on hover
+// create function to show add to library option on click
+// store to localstorage
+
+
 const fetchTypeResults = (type, query) => {
     const url = `http://localhost:3002/search/${type}/${query}`;
     return fetch( url )
@@ -32,7 +38,6 @@ const createCard = ( data ) => {
         } else {
             img.src = data.thumbnails.url;;
         }
-        
     } else {
         img.src = "https://lh3.googleusercontent.com/Oy0MoVVYmt7e2QhRbN4mrnerSbnEGEbtQxeRriRhMkHDZC1a-HUVsL6ziQy3tkDMoVbsogBHvj2WqtLD=w544-h544-l90-rj"
     }
@@ -50,9 +55,9 @@ const createCard = ( data ) => {
 
     switch ( data.type ){
         case "song":
-            if ( data.artist.name && data.artist.name.length > 0 || data.artist.name ){
-                artist.textContent = data.artist.name || data.artist[0].name;
-                artist.id = data.artist.browseId || data.artist[0].browseId;
+            if ( data.album.name ){
+                artist.textContent = data.album.name;
+                artist.id = data.album.browseId;
             }
             container.id = data.videoId;
             break;
@@ -138,8 +143,13 @@ const clickHandler = (event) => {
         const target = tarClass[0].toLowerCase();
         if ( tarClass[2] == "close" ){
             displaydetails(global[target].content, target, false);
+            document.getElementById("results").style.display = "block";
+            document.getElementById("details-view").style.display = "none";
         } else if ( tarClass[1] == "subhead" ){
-            displaydetails(global[target].content, target, true);
+            displaydetails(global[target].content, "details-view", true);
+            document.getElementById("details-view").style.display = "block";
+            document.getElementById("results").style.display = "none";
+            document.getElementById("library").style.display = "none";
         } else if ( tarClass[0] === "search-heading"){
             const tar = event.target.textContent.toLowerCase();
             displaydetails(global[tar].content, tar, true);
@@ -149,6 +159,7 @@ const clickHandler = (event) => {
             const resultElem = document.getElementById("results");
             const tabs = document.getElementsByClassName("tab");
             if ( name == "library" ){
+                document.getElementById("details-view").style.display = "none";
                 resultElem.style.display = "none";
                 libraryElem.style.display = "block";
                 tabs[0].classList.remove("active");

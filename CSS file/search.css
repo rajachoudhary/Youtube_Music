@@ -25,7 +25,7 @@
 }
 
 /* results */
-#results {
+.list-view {
     color: white;
     position: absolute;
     top: 7rem;
@@ -51,6 +51,9 @@
 .detail-meta > h1:hover, .detail-meta h6:hover, img:hover, .search-heading:hover, .subhead:hover {
     cursor: pointer;
     color: #939393;
+}
+.detail-meta h6:hover {
+    text-decoration: underline;
 }
 .detail-card > img {
     width: 4rem;
@@ -96,7 +99,7 @@
     text-align: center;
 }
 @media screen and ( max-width: 1100px ) {
-    #results {
+    .list-view {
         padding-left: 5rem;
     }
     #top-header {
@@ -105,7 +108,7 @@
 }
 
 @media screen and ( max-width:700px) {
-    #results {
+    .list-view {
         padding-left: 2rem;
     }
     #top-header {
