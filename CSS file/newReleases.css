@@ -6,11 +6,12 @@
 }
 
 .slider {
-  width: 95%;
+  width: 83%;
   margin: auto;
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(5, 260px);
-  gap: 20px;
+  grid-template-columns: repeat(5, 240px);
+  gap: 10px;
 }
 .divsongs {
   display: grid;
@@ -43,4 +44,16 @@
   background-color: black;
   color: white;
   font-family: monospace;
+}
+#newRelHeading {
+  display: inline;
+  margin-right: 20px;
+  margin-left: 130px;
+}
+.newReleasesSongImg {
+  height: 190px;
+  width: 190px;
+}
+#displayAll {
+  margin-top: 100px;
 }
