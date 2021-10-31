@@ -79,10 +79,24 @@
     height: 2.5rem;
     padding: 0rem 0rem 0rem 0.6rem;
     border-radius: 50%;
+    color: #fff;
     background-color: #00579C;
 }
 .nav-sign-in:hover {
     cursor: pointer;
+}
+.nav-user:hover > .sign-out {
+    display: block;
+}
+.sign-out {
+    position: absolute;
+    top: 3.75rem;
+    right: 1.5rem;
+    background-color: #212121;
+    width: 12rem;
+    padding: 0rem 1rem 3rem;
+    height: 3rem;
+    display: none;
 }
 
 .active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {
