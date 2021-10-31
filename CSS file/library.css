@@ -7,7 +7,7 @@
     position: relative;
     fill: #c3c3c3;
     left: 25rem;
-    width: 25rem;
+    width: 27rem;
     height: 15rem;
     margin-top: 5rem;
     text-align: center;
@@ -23,6 +23,17 @@
 }
 #artists .detail-card {
     border-radius: 0%;
+}
+#error-page {
+    display: none;
+    margin: 0rem auto;
+    margin-top: 20rem;
+    z-index: 2000;
+    text-align: center;
+    color: white;
+}
+#error-page img {
+    margin-bottom: 2rem;
 }
 /* .big-detail {
     display: flex;

@@ -38,11 +38,9 @@ const updateLibrary = (id, payload) => {
 const removeFromLibrary = async (target) => {
     try {
         const category = target.classList[1].toLowerCase() + "s";
-        console.log( target, userLibrary[category], category)
         const id = target.id;
         for ( let i = 0; i < userLibrary[category].length; i++ ){
             if ( id == userLibrary[category][i].browseId || id == userLibrary[category][i].videoId ){
-                console.log("match");
                 userLibrary[category].splice( i, 1 );
                 break;
             }
@@ -58,7 +56,7 @@ const removeFromLibrary = async (target) => {
         }
         await updateLibrary(parentId, payload);
     } catch ( err ) {
-        console.log(err);
+        errorHandler(err)
     }
 }
 
@@ -68,12 +66,22 @@ const loadPlaylist = async () => {
     try {
         const id = JSON.parse(localStorage.getItem("User")).id;
         let lib = await fetchLibrary(id);
-        if ( lib ){
+        if ( lib[0] ){
+            console.log(lib)
             userLibrary = lib[0];
+        } else {
+            const parentId = JSON.parse(localStorage.getItem("User")).id;
+            const payload = {
+            "parentId": parentId,
+            "songs": [],
+            "artists": [],
+            "playlists": [],
+            "videos": []
+        }
+        await updateLibrary(parentId, payload);
         }
     } catch ( err ) {
-        document.body.append()
-        console.log(err);
+        errorHandler(err)
     }
 }
 
@@ -207,22 +215,36 @@ const clickHandler = (event) => {
             handleView(event, name);
         } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
             const target = event.target.parentElement;
-            removeFromLibrary(target).then( res => console.log(res))
+            removeFromLibrary(target)
         }
     }
 }
+
+function errorHandler(err){
+    const tabs = document.getElementsByClassName("item-details");
+    for ( const tab of tabs ){
+        tab.style.display = "none";
+    }
+    document.getElementById("error-page").style.display = "block";
+    console.log(err);
+}
+
+const handleLoad = async () => {
+    document.body.querySelector("nav").append(navbar({ pageTitle: "Library" }));
+    loadingIndicator("playlists", true);
+    await loadPlaylist();
+    displaydetails(userLibrary["playlists"], "playlists");
+    loadingIndicator("playlists", false);
+    document.body.addEventListener("click", (event) => {
+        event.preventDefault();
+        clickHandler(event); 
+    });
+}
+
 
 window.addEventListener("load", async () => {
     if ( !localStorage.getItem("User") ){
         window.location.href = "./login.html";
     }
-    loadingIndicator("playlists", true);
-    await loadPlaylist();
-    displaydetails(userLibrary["playlists"], "playlists");
-    loadingIndicator("playlists", false);
-    document.body.querySelector("nav").append(navbar({ pageTitle: "Library" }));
-    document.body.addEventListener("click", (event) => {
-        event.preventDefault();
-        clickHandler(event); 
-    });
+    handleLoad();
 })

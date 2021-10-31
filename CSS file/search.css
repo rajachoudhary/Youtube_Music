@@ -138,6 +138,19 @@
     fill: #b3b3b3;
     text-align: center;
 }
+
+#error-page {
+    display: none;
+    margin: 0rem auto;
+    margin-top: 20rem;
+    z-index: 2000;
+    text-align: center;
+    color: white;
+}
+#error-page img {
+    margin-bottom: 2rem;
+}
+
 @media screen and ( max-width: 1100px ) {
     .list-view {
         padding-left: 5rem;

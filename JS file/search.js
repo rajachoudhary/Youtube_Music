@@ -246,7 +246,7 @@ const clickHandler = (event) => {
             }
         } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
             const target = event.target.parentElement;
-            addToLibrary(target).then( res => console.log(res))
+            addToLibrary(target)
         }
     }
 }

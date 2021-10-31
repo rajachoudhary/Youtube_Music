@@ -45,12 +45,12 @@
   ],
   "library": [
     {
-      "id": 1,
       "parentId": 4,
       "songs": [],
       "artists": [],
       "playlists": [],
-      "videos": []
+      "videos": [],
+      "id": 1
     }
   ]
 }
