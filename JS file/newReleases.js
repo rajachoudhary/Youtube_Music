@@ -97,7 +97,7 @@ function showData(data) {
 
 newReleases(showData);
 
-function showContainer(container, hideDiv) {
+function showContainer(container, hideDiv,heading) {
 
     for (let i = 0; i < container.length; i++) {
         container[i].onclick = () => {
@@ -106,6 +106,10 @@ function showContainer(container, hideDiv) {
             if (hideDiv != undefined) {
                 hideDiv.style.display = "none";
             }
+            if (heading != undefined)
+            {
+                heading.style.display = "none";
+                }
             fetchPlaylist(container[i].innerHTML, "main");
         }
 
@@ -117,32 +121,118 @@ async function fetchPlaylist(artist, target) {
     let relatedSongs = await fetch(`http://localhost:3002/search/song/${artist}`);
     let getPlaylist = await relatedSongs.json();
     let content = getPlaylist.content;
-    console.log(getPlaylist);
+    console.log(content[0])
     let previousLayout = document.getElementsByTagName(target)[0];
     previousLayout.style.display = "none";
 
     let playlistDisplay = document.createElement("div");
+    playlistDisplay.className = "playListDisplay";
+
+    let playListHeadingDiv = document.createElement("div");
+     let playlistTitleDiv = document.createElement("div");
+    let playlistTitleDivImg = document.createElement("img");
+    playlistTitleDivImg.src = content[0].thumbnails[1].url;
+    playlistTitleDiv.append(playlistTitleDivImg);
+    
+    let playlistTitleContent = document.createElement("div");
+    let playlistTitleContentHeading = document.createElement("h1");
+    playlistTitleContentHeading.innerHTML = content[0].album.name;
+   
+    //play Button
+
+    let playlistTitleContentDuration = document.createElement("p");
+    let playButton = document.createElement("button");
+    playButton.id = "playButton";
+     let playButtonContent = document.createElement("i");
+    playButtonContent.className = "fa fa-play";
+    playButtonContent.innerHTML = "&nbsp&nbsp&nbsp&nbspPLAY";
+    playButton.append(playButtonContent);
+
+    //addToLibrary
+
+    let addToLibrary = document.createElement("button");
+    addToLibrary.id = "addToLibrary";
+    let addLibraryContent = document.createElement("i");
+    addLibraryContent.className = "fa fa-plus-square";
+    addLibraryContent.innerHTML = "&nbsp&nbsp&nbsp&nbspADD TO LIBRARY";
+    addToLibrary.append(addLibraryContent);
+    // addToLibrary.innerHTML = "";
+    playlistTitleContent.append(playlistTitleContentHeading, playlistTitleContentDuration, playButton, addToLibrary);
+    playListHeadingDiv.append(playlistTitleDiv, playlistTitleContent);
+    playListHeadingDiv.id = "playListHeadingDiv";
+    playlistDisplay.append(playListHeadingDiv);
+    
+
+    let totalMin = 0;
     for (let i = 0; i < content.length; i++) {
         let divSongs = document.createElement("div");
+        let serialNumber = document.createElement("p");
+        serialNumber.innerHTML = i + 1.
+        serialNumber.className = "serialNumber";
+       
         divSongs.className = "divsongs";
+
         let img = document.createElement("img");
         img.src = content[i].thumbnails[0].url;
         let title = document.createElement("p");
         title.innerHTML = content[i].name;
         let duration = document.createElement("p");
-        //  let min = Math.floor((content[i].duration % 3600)/60);
-        //  let second = content[i].duration % 60;
-        //  duration.innerHTML = `${min}:${second}`;
+        let min = Math.floor((content[i].duration) / 1000 / 60);
+        totalMin += min;
+        let second = (content[i].duration) / 1000 - min * 60;
+        if (second < 10)
+            second = `0${second}`;
+        
+        duration.innerHTML = `${min}:${second}`;
+        let like = document.createElement("div");
+        like.className = "like";
+        like.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope tp-yt-iron-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope tp-yt-iron-icon"><path d="M14.9 3H6c-.8 0-1.5.5-1.8 1.2l-3 7.3c-.1.2-.2.4-.2.7v2c0 1.1.9 2 2 2h6.3l-1 4.7v.3c0 .4.2.8.4 1.1.6.7 1.5.7 2.1.1l5.5-5.7c.4-.4.6-.9.6-1.4V5c0-1.1-.9-2-2-2zm-.2 12.6l-3.5 3.6c-.2.2-.5 0-.4-.2l1-4.6H4c-.6 0-1-.5-1-1v-1.1l2.7-6.6c.2-.5.6-.7 1-.7H14c.5 0 1 .5 1 1v8.8c-.1.3-.2.6-.3.8zM19 3h4v12h-4V3z" class="style-scope tp-yt-iron-icon"></path></g></svg>'
+        // like.className = "fa fa-thumbs-up";
+        like.style.display = "none";
 
-        divSongs.append(img, title);
+         let disLike = document.createElement("i");
+        disLike.className = "fa fa-thumbs-down";
+        disLike.style.display = "none";
+
+        divSongs.append(serialNumber, img, title,duration,like,disLike);
         let whiteLine = document.createElement("div");
         whiteLine.className = "whiteLine";
         playlistDisplay.append(divSongs, whiteLine);
     }
-
-    document.body.append(playlistDisplay);
+    console.log("Total Min", totalMin);
+    playlistTitleContentDuration.innerHTML = `20 songs . ${totalMin} minutes`;
+      document.body.append(playlistDisplay);
     document.body.className = "afterClick"
-    //  console.log(body.innerHTML)
+    let divSongs = document.getElementsByClassName("divsongs");
+    let like = document.getElementsByClassName("like");
+    let disLike = document.getElementsByClassName("fa-thumbs-down");
+    let serialNumber = document.getElementsByClassName("serialNumber");
+    //show like and dislike button on hover
+
+         for (let j = 0; j < divSongs.length; j++)
+         {
+             divSongs[j].onmouseover = () => {
+                 like[j].style.display = "inline";
+                 disLike[j].style.display = "inline";
+                //  serialNumber[j].innerHTML = "";
+                 console.log(serialNumber[j].innerHTML);
+                //  serialNumber[j].className="fa fa-play"
+            }
+    }
+    //disable like and dislike button on mouseout
+    
+      for (let j = 0; j < divSongs.length; j++)
+         {
+             divSongs[j].onmouseout = () => {
+                 like[j].style.display = "none";
+                 disLike[j].style.display = "none";
+                  console.log(serialNumber[j].innerHTML);
+                //  serialNumber[j].innerHTML = "";
+                //  serialNumber[j].removeAttribute("class");
+                //  serialNumber[j].className = "serialNumber";
+            }
+    }
+    
 }
 
 let all = document.getElementById("newRelAll");
@@ -157,6 +247,10 @@ function showAllData(data) {
     let displayAll = document.createElement("div");
     displayAll.id = "displayAll";
     displayAll.className = "slider";
+    let newRelHeading = document.createElement("h1");
+    newRelHeading.id = "allHeading";
+    newRelHeading.innerHTML = "New releases";
+    document.body.append(newRelHeading);
     console.log(data);
     for (let i = 0; i < data.length; i++) {
         let div = document.createElement("div");
@@ -177,7 +271,13 @@ function showAllData(data) {
 
     document.body.append(displayAll);
     let songs = document.getElementsByClassName("songs");
-    showContainer(songs, displayAll);
+    showContainer(songs, displayAll,newRelHeading);
 
 
+}
+let divSongs = document.getElementsByClassName("divSongs");
+console.log(divSongs);
+if (divSongs != undefined)
+{
+    console.log("Kem che");
 }

@@ -20,17 +20,25 @@
   border: 0;
   /* margin-bottom: 20px; */
 }
+#container > h3 {
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+  font-weight: 400;
+  line-height: 1.3333;
+  font-size: 24px;
+}
 a {
   text-decoration: none;
+  color: #1f52f9;
 }
 #email {
   margin-top: 20px;
-  width: 400px;
+  width: 415px;
   height: 40px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #d5d2d2;
   border-radius: 5px;
   outline: none;
+  overflow: hidden;
 }
 #firstname,
 #lastname,
@@ -39,11 +47,78 @@ a {
   height: 40px;
   width: 200px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #d5d2d2;
   border-radius: 5px;
+  /* outline: none; */
   outline: none;
 }
-#email + p {
+#firstname:focus,
+#lastname:focus,
+#confirm:focus,
+#pass:focus,
+#email:focus {
+  border: 2px solid #1f52f9;
+}
+
+#firstname + label,
+#pass + label {
+  position: relative;
+  /* top: -28px; */
+  font-size: 12px;
+  color: gray;
+  left: -188px;
+}
+#firstname:focus + label,
+#lastname:focus + label,
+#email:focus + label,
+#pass:focus + label,
+#confirm:focus + label {
+  top: -1.2rem;
+  color: #1f52f9;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  transition: all 0.2s ease-out;
+}
+#lastname:not(:placeholder-shown) + label,
+#lastname:focus + label,
+#firstname:not(:placeholder-shown) + label,
+#firstname:focus + label,
+#email:not(:placeholder-shown) + label,
+#email:focus + label,
+#pass:not(:placeholder-shown) + label,
+#pass:focus + label,
+#confirm:not(:placeholder-shown) + label,
+#confirm:focus + label {
+  top: -1.2rem;
+  color: gray;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  outline: none;
+  background-color: white;
+  padding: 0px 3px;
+}
+
+#lastname,
+#confirm {
+  margin-left: -50px;
+}
+#confirm + label,
+#lastname + label {
+  position: relative;
+  font-size: 12px;
+  color: gray;
+  left: -190px;
+  top: 0px;
+}
+#email + label {
+  position: relative;
+  font-size: 12px;
+  color: gray;
+  left: -405px;
+}
+#email + label + p {
   font-size: 12px;
   /* margin-left: -60px; */
 }
@@ -62,11 +137,14 @@ a {
 #register {
   float: right;
   margin-right: 130px;
-  width: 100px;
-  height: 30px;
+  width: 80px;
+  height: 35px;
   color: white;
   background-color: rgb(26, 115, 232);
   border: none;
   border-radius: 5px;
-  margin-top: -5px;
+  margin-top: -7px;
+}
+#register:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }

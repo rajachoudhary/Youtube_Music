@@ -1,7 +1,7 @@
 import displaySearchBar from "./searchBar.js";
 
 const isValidUser = () => {
-    const name = localStorage.getItem("Name");
+    const name =JSON.parse(localStorage.getItem("Name"));
     return name;
 }
 
