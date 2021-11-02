@@ -103,6 +103,17 @@ const createCard = ( data ) => {
     add.textContent = "Add to Library";
     addSmall.textContent = "+";
 
+    if ( type.textContent == "a" ) type.textContent = "Artist";
+
+    if ( type.textContent && userLibrary[type.textContent.toLocaleLowerCase()] && userLibrary[type.textContent.toLocaleLowerCase()].length > 0 ){
+        for ( const item of userLibrary[type.textContent.toLocaleLowerCase()] ){
+            if ( container.id == item.browseId || container.id == item.videoId ){
+                add.textContent = "Added";
+                addSmall.textContent = "-";
+            }
+        }    
+    }
+    
     imgOver.className = "img-over";
     add.className = "add";
     addSmall.className = "add-small";
@@ -121,6 +132,7 @@ const displaydetails = (data, target, k) => {
     const frag = document.createElement("div");
 
     name.textContent = data[1].type || data[0].type + "s";
+    if ( name.textContent == "a" ) name.textContent = "Artist";
     name.textContent = name.textContent[0].toUpperCase() + name.textContent.slice(1);
     see.textContent = "SHOW ALL";
 
@@ -178,14 +190,41 @@ const handleSearch = async () => {
     }    
 }
 
+const removeFromLibrary = async (target) => {
+    try {
+        const category = target.classList[1].toLowerCase();
+        const id = target.id;
+        for ( let i = 0; i < userLibrary[category].length; i++ ){
+            if ( id == userLibrary[category][i].browseId || id == userLibrary[category][i].videoId ){
+                userLibrary[category].splice( i, 1 );
+                break;
+            }
+        }
+        const parentId = JSON.parse(localStorage.getItem("User")).id;
+        const payload = {
+            "id": userLibrary.id,
+            "parentId": parentId,
+            "songs": userLibrary["song"],
+            "artists": userLibrary["artist"],
+            "playlists": userLibrary["playlist"],
+            "videos": userLibrary["video"]
+        }
+        await updateLibrary(parentId, payload);
+    } catch ( err ) {
+        console.log(err)
+    }
+}
+
+
 const addToLibrary = async (target) => {
     try {
         const category = target.classList[1].toLowerCase();
+        console.log(category);
         const id = target.id;
         const data = searchResults[category].content;
         for ( const res of userLibrary[category] ){
             if ( id == res.browseId || id == res.videoId ){
-                console.log("match");
+                removeFromLibrary(target);
                 return;
             }
         }
@@ -266,6 +305,16 @@ const loadPlaylist = async () => {
                 artist: lib.artists,
                 video: lib.videos
             }
+        } else {
+            const parentId = JSON.parse(localStorage.getItem("User")).id;
+            const payload = {
+            "parentId": parentId,
+            "songs": [],
+            "artists": [],
+            "playlists": [],
+            "videos": []
+            }
+            await updateLibrary(parentId, payload);
         }
     } catch ( err ) {
         console.log(err);

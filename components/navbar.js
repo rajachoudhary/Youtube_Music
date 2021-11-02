@@ -11,6 +11,7 @@ const addNavbarStyling = () => {
     
     link.rel = "stylesheet";
     link.href = "../CSS file/navbar.css";
+    
     link2.rel = "stylesheet";
     link2.href = "../CSS file/loadingIndicator.css";
     

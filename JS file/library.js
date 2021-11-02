@@ -67,7 +67,6 @@ const loadPlaylist = async () => {
         const id = JSON.parse(localStorage.getItem("User")).id;
         let lib = await fetchLibrary(id);
         if ( lib[0] ){
-            console.log(lib)
             userLibrary = lib[0];
         } else {
             const parentId = JSON.parse(localStorage.getItem("User")).id;
@@ -97,7 +96,7 @@ const createCard = ( data ) => {
         if ( data.thumbnails[0] ){
             img.src = data.thumbnails[data.thumbnails.length-1].url;
         } else {
-            img.src = data.thumbnails.url;;
+            img.src = data.thumbnails.url;
         }
     } else {
         img.src = "https://lh3.googleusercontent.com/Oy0MoVVYmt7e2QhRbN4mrnerSbnEGEbtQxeRriRhMkHDZC1a-HUVsL6ziQy3tkDMoVbsogBHvj2WqtLD=w544-h544-l90-rj"
