@@ -3,7 +3,7 @@ body{
 }
 #index1stContainer{
     padding-top: 100px;
-    width: 80%;
+    /* width: 100%; */
     margin: auto;
     justify-content: center  ;
 }
@@ -35,4 +35,10 @@ body{
     border-radius: 19px;
     margin-top: 160px;
     margin-right: 1180px ;
+}
+
+/* --------------------Charts------------------------- */
+#top100Songs>img{
+    height: 196px;
+    width: 196px;
 }

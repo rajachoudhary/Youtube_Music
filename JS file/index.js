@@ -4,8 +4,8 @@ var count = 1;
 window.addEventListener("load", async()=>{
     document.body.querySelector("nav").append(navbar({ pageTitle: "Home"}))
    const res1 = await quickPicks("arjit")
-   const res2 = await quickPicks("jubin")
-   displayMyFavourite({...res1,...res2})
+   
+   displayMyFavourite({...res1})
     // quickPicks("jubin")
 })
 
@@ -15,8 +15,8 @@ function quickPicks(value){
         return response.json()
     })
     // .then(response=>{
-    //     // console.log(response)
-    //     // displayMyFavourite(response)
+    //     console.log(response)
+    // //     // displayMyFavourite(response)
     //     arr.push(response)
     // })
     .catch(error=>{
