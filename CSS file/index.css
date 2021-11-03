@@ -3,16 +3,36 @@ body{
 }
 #index1stContainer{
     padding-top: 100px;
+    width: 80%;
     margin: auto;
     justify-content: center  ;
 }
 
-.urlspace{
-    /* --bs-gutter-x: 0rem */
+.urlspace{    
     width: 18%;
 }
 
-.row{
-    padding-right: calc(var(--bs-gutter-x) * .0);
-    padding-left: calc(var(--bs-gutter-x) * .0);
+.innerDiv{
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis 
+    
+}
+#rightButton1{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    margin-left: 1270px;
+    margin-top: 165px;
+}
+
+#leftButton2{
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    margin-top: 160px;
+    margin-right: 1180px ;
 }

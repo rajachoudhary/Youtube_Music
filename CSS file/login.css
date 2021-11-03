@@ -5,7 +5,7 @@
 }
 #container {
   width: 400px;
-  height: 500px;
+  height: 550px;
   margin: auto;
   margin-top: 80px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
@@ -26,18 +26,80 @@ h3 {
 }
 a {
   text-decoration: none;
+  color: #1f52f9;
 }
 #email,
 #pass {
   width: 350px;
-  height: 40px;
-  font-size: 20px;
+  height: 50px;
+  font-size: 16px;
   margin-top: 30px;
   padding: 10px;
-  border: 1px solid navy;
+  border: 1px solid black;
   border-radius: 3px;
   outline: none;
 }
+#email {
+  margin-bottom: -50px;
+}
+#email + label {
+  position: relative;
+  top: -19px;
+  left: -130px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#pass + label {
+  position: relative;
+  top: -35px;
+  left: -187px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#email:focus,
+#pass:focus {
+  border: 2px solid #1f52f9;
+}
+
+#email:focus + label {
+  top: -2.6rem;
+  color: #1f52f9;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  transition: all 0.2s ease-out;
+}
+#pass:focus + label {
+  top: -3.6rem;
+  color: #1a73e8;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  transition: all 0.2s ease-out;
+}
+#email:not(:placeholder-shown) + label,
+#email:focus + label {
+  top: -2.7rem;
+  color: gray;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  outline: none;
+  background-color: white;
+  padding: 0px 3px;
+  color: #1a73e8;
+}
+#pass:not(:placeholder-shown) + label,
+#pass:focus + label {
+  top: -3.7rem;
+  color: gray;
+  font-weight: 500px;
+  background: none;
+  z-index: 10;
+  outline: none;
+  background-color: white;
+  padding: 0px 3px;
+  color: #1a73e8;
+}
+
 #pass + p {
   margin-top: 50px;
   font-size: 13px;
@@ -53,11 +115,14 @@ a {
   float: right;
   background-color: rgb(26, 115, 232);
   color: white;
-  height: 30px;
-  width: 100px;
+  height: 35px;
+  width: 80px;
   border-radius: 5px;
-  margin-top: -5px;
+  margin-top: -7px;
   border: none;
+}
+#login:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
 #showDiv {
   margin-top: 20px;
@@ -66,5 +131,8 @@ a {
   float: left;
 }
 #showDiv + p {
+  font-size: 13px;
+  color: gray;
+  font-family: Georgia, "Times New Roman", Times, serif;
   clear: both;
 }
