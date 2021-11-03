@@ -17,7 +17,7 @@ function quickPicks(value){
     // .then(response=>{
     //     console.log(response)
     // //     // displayMyFavourite(response)
-    //     // arr.push(response)
+    //     arr.push(response)
     // })
     .catch(error=>{
     //    console.log(error) 
