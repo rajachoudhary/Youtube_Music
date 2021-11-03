@@ -13,7 +13,7 @@
     top: 0;
     left: 0;
     right: 0;
-    color: #a3a3a3;
+    color: #737373;
     height: 5rem;
     max-width: 1920px;
     padding: 1rem 1.5rem;
@@ -62,7 +62,7 @@
     height: 2rem;
     width: 2rem;
     display: block;
-    fill: #c3c3c3;
+    fill: #737373;
 }
 .nav-sign-in {
     font-size: 1rem;
@@ -76,14 +76,51 @@
 .nav-user {
     font-size: 1.75rem;
     width: 2.5rem;
-    height: 3rem;
-    margin-top: 0.25rem;
-    padding: 0.25rem 0rem 0rem 0.6rem;
+    height: 2.5rem;
+    padding: 0rem 0rem 0rem 0.6rem;
     border-radius: 50%;
+    color: #fff;
     background-color: #00579C;
 }
 .nav-sign-in:hover {
     cursor: pointer;
+}
+.show-menu:hover > .menu {
+    display: block;
+}
+.menu {
+    position: absolute;
+    top: 3.8rem;
+    right: 1.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #212121;
+    color: white;
+    fill: white;
+    width: 12rem;
+    padding: 1rem 1rem 1rem;
+    height: 27rem;
+    width: 15rem;
+    display: none;
+}
+.menu > hr {
+    width: 115%;
+    position: relative;
+    top:-0.5rem;
+    left: -1rem;
+}
+.menu-line {
+    display: flex;
+    gap: 0.75rem;
+    height: 3rem;
+}
+.menu-icon {
+    margin-top: -1rem;
+    width: 2rem;
+}
+.menu-text {
+    margin-top: 0.25rem;
 }
 
 .active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {

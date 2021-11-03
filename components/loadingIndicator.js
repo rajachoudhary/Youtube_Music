@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {String} target ID of the target element 
+ * @param {Boolean} isLoading Status if is loading or completed
+ */
 const loadingIndicator = ( target, isLoading ) => {
     const container = document.getElementById(target);
     let loader = container.querySelector("#loader");

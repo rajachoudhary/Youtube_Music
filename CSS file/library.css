@@ -1,0 +1,98 @@
+.item-details {
+    position: relative;
+    top: 6rem;
+    display: none;
+}
+.error {
+    position: relative;
+    fill: #c3c3c3;
+    left: 25rem;
+    width: 27rem;
+    height: 15rem;
+    margin-top: 5rem;
+    text-align: center;
+    color: #f3f3f3;
+}
+.disc {
+    margin: 0 auto 3rem;
+    width: 15rem;
+    height: 15rem;
+}
+#playlists {
+    display: block;
+}
+#artists .detail-card {
+    border-radius: 0%;
+}
+#artists .detail-card h1 {
+    margin-top: 10%;
+}
+#error-page {
+    display: none;
+    margin: 0rem auto;
+    margin-top: 20rem;
+    z-index: 2000;
+    text-align: center;
+    color: white;
+}
+#error-page img {
+    margin-bottom: 2rem;
+}
+/* .big-detail {
+    display: flex;
+    flex-direction: row;
+
+}
+.big-detail > div {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: nowrap;
+}
+.big-detail .detail-card {
+    width: 15rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+} 
+.big-detail img {
+    width: 15rem;
+    height: 15rem;
+}
+#details-view {
+    display: none;
+}
+.big-detail .add, .big-detail .add-small, .big-detail .img-over > svg {
+    position: relative;
+    top: 5rem;
+    left: 5rem;
+    width: 15rem;
+}
+.big-container {
+
+}
+.remove {
+    top: -11rem !important;
+    left: 9rem !important;
+    max-width: 6rem;
+}
+.big-meta {
+
+}
+.big-img-over  > svg {
+    width: 30rem;
+    position: relative;
+    top: -15rem !important;
+    left: 0rem !important;
+    height: 15rem;
+} */
+
+@media screen and ( max-width:1100px) {
+    .error {
+        left: 5rem;
+    }
+}
+
+@media screen and ( max-width:700px) {
+    .error {
+        left: 1rem;
+    }
+}

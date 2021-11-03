@@ -1,0 +1,141 @@
+#music-player {
+  position: fixed;
+  bottom: 0;
+  height: 6rem;
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #212121;
+  fill: white;
+  color: white;
+  display: flex;
+  gap: 10rem;
+}
+.btns {
+  display: flex;
+  height: 3rem;
+}
+.ctrl-btn {
+  position: relative;
+  top: -0.5rem;
+  width: 3rem;
+  height: 3rem;
+}
+.play {
+  height: 5.5rem;
+  width: 5.5rem;
+  position: relative;
+  top: -1.85rem;
+}
+.play:hover {
+    padding: 0px;
+}
+.music-slider {
+  width: 100%;
+  bottom: 5.6rem;
+  left: 0rem;
+  position: fixed;
+}
+
+.seek-bar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.25rem;
+  border-radius: 10px;
+  background: #a3a3a3;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 1px;
+  height: 1px;
+  box-shadow: -50rem 0 0 50rem #c31112;
+}
+.texts {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.meta {
+  /* position: relative; */
+  margin-top: -1.7rem;
+  height: 6rem;
+  gap: 1.25rem;
+  display: flex;
+}
+.extra {
+  display: flex;
+  /* position: fixed; */
+  height: 3rem;
+  bottom: 1.5rem;
+  left: 50%;
+  fill: white;
+  gap: 7rem;
+}
+#player-name {
+  max-width: 17rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: hidden;
+}
+.extra > div > div:hover , .btns > div:hover{
+  padding: 5px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.644);
+  cursor: pointer;
+}
+.cont-1 {
+  display: flex;
+  gap: 3rem;
+}
+.cont-2 {
+  display: flex;
+  gap: 3rem;
+}
+.l1 {
+    position: relative;
+    bottom: 0.3rem;
+}
+.l2 {
+    position: relative;
+    bottom: -0.3rem;
+}
+#music-player img {
+    margin-top: 1rem;
+    width: 4rem;
+    height: 4rem;
+}
+.up {
+    transform: rotate(180deg);
+}
+.up:active {
+    transform: rotate(0deg);
+}
+@media screen and ( max-width: 1100px ) {
+    .cont-1 {
+        display: none;
+    }
+}
+@media screen and ( max-width: 900px ) {
+    .cont-2 {
+        display: none;
+    }
+    .extra {
+        left: 75%
+    }
+    .meta {
+        left: 45%
+    }
+}
+@media screen and ( max-width: 700px) {
+    .cont-1{
+        display: none;
+    }
+    .extra {
+        left: 75%
+    }
+    .meta {
+        left: 50%;
+    }
+}
