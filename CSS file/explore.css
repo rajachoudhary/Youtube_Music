@@ -72,3 +72,13 @@ body {
   background: none;
   z-index: 100;
 }
+.playImg {
+  fill: white;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  margin-top: -180px;
+  margin-left: 140px;
+  background-color: black;
+  border-radius: 20px;
+}

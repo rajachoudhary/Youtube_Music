@@ -1,4 +1,4 @@
-async function newReleases(fun) {
+export async function newReleases(fun) {
     try {
         let res = await fetch("http://localhost:3002/search/album/new%20releases%20hindi");
         let data = await res.json();
@@ -11,7 +11,7 @@ async function newReleases(fun) {
     }
 }
 
-function showData(data) {
+ function showData(data) {
 
     let container = document.getElementById("container");
 
@@ -242,7 +242,7 @@ all.onclick = () => {
 }
 
 
-function showAllData(data) {
+export function showAllData(data) {
     let main = document.getElementsByTagName("main")[0];
     main.style.display = "none";
     let displayAll = document.createElement("div");
