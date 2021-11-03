@@ -1,0 +1,74 @@
+body {
+  background-color: black;
+  color: white;
+}
+#exploreHeading {
+  display: grid;
+  width: 82%;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 150px;
+  margin-left: 120px;
+  margin-right: 190px;
+  margin-bottom: 80px;
+  padding: 10px;
+  gap: 20px;
+}
+
+.newReleases,
+.moods,
+.charts {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border: none;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgb(33, 33, 33);
+}
+.newReleases > h3,
+.charts > h3,
+.moods > h3 {
+  font-size: 25px;
+  margin: 15px;
+  margin-left: -50px;
+  /* z-index: 100; */
+  background-color: rgb(33, 33, 33);
+}
+.newReleasesIcon,
+.chartsIcon,
+.moodsIcon {
+  fill: gray;
+  height: 30px;
+  width: 80px;
+  margin: 15px;
+  margin-left: 5px;
+  /* z-index: 100; */
+  background-color: rgb(33, 33, 33);
+}
+.moodsDiv {
+  margin: auto;
+  width: 84%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.moodsDiv > div {
+  font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: rgb(41, 41, 41);
+  border-radius: 5px;
+  color: white;
+  height: 30px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.moodsHeading {
+  margin-left: 120px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+#rightBtnImg {
+  background: none;
+  z-index: 100;
+}
