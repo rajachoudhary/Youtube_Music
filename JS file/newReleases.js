@@ -21,7 +21,7 @@ export async function newReleases(fun) {
         slideImages.className = "slider";
         for (let j = i; j < i + 5; j++) {
             let div = document.createElement("div");
-
+             div.className = "songsDiv";
             let img = document.createElement("img");
 
 
@@ -35,7 +35,11 @@ export async function newReleases(fun) {
             let artist = document.createElement("p");
             artist.className = "songs"
             artist.innerHTML = data[j].artist;
-            div.append(img, title, artist);
+             let playImg = document.createElement("div");
+            playImg.className = "playImg";
+            playImg.style.display = "none";
+            playImg.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8 5v14l11-7z" class="style-scope yt-icon"></path></g></svg>'
+            div.append(img,playImg, title, artist);
 
             let buttonLeft = document.createElement("div");
             let leftBtnImg = document.createElement("img");
@@ -65,6 +69,35 @@ export async function newReleases(fun) {
 
     }
 
+     let songsDiv = document.getElementsByClassName("songsDiv");
+     let playImg = document.getElementsByClassName("playImg");
+    console.log('songsDiv:', songsDiv.length);
+     for (let i = 0; i < songsDiv.length; i++)
+     {
+         
+         songsDiv[i].onmouseover = () => {
+             console.log("India");
+             console.log(playImg[i])
+             playImg[i].style.display ="block" ;
+             
+         }
+    
+
+         }
+
+      for (let i = 0; i < songsDiv.length; i++)
+     {
+         
+         songsDiv[i].onmouseleave = () => {
+             console.log("India");
+             console.log(playImg[i])
+             playImg[i].style.display ="none" ;
+             
+         }
+    
+
+         }
+     
     let slideIndex = 1;
     showDivs(slideIndex);
 

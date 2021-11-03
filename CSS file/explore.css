@@ -76,8 +76,8 @@ body {
   fill: white;
   height: 40px;
   width: 40px;
-  position: relative;
-  margin-top: -180px;
+  position: absolute;
+  margin-top: -100px;
   margin-left: 140px;
   background-color: black;
   border-radius: 20px;

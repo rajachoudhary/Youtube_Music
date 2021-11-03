@@ -78,7 +78,7 @@ async function newAlbums(fun) {
             playImg.className = "playImg";
             playImg.style.display = "none";
             playImg.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8 5v14l11-7z" class="style-scope yt-icon"></path></g></svg>'
-            div.append(img, title, artist,playImg);
+            div.append(img,playImg, title, artist);
            
 
             let buttonLeft = document.createElement("div");
