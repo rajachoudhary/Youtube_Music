@@ -186,12 +186,13 @@ async function fetchPlaylist(artist, target) {
         duration.innerHTML = `${min}:${second}`;
         let like = document.createElement("div");
         like.className = "like";
-        like.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope tp-yt-iron-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope tp-yt-iron-icon"><path d="M14.9 3H6c-.8 0-1.5.5-1.8 1.2l-3 7.3c-.1.2-.2.4-.2.7v2c0 1.1.9 2 2 2h6.3l-1 4.7v.3c0 .4.2.8.4 1.1.6.7 1.5.7 2.1.1l5.5-5.7c.4-.4.6-.9.6-1.4V5c0-1.1-.9-2-2-2zm-.2 12.6l-3.5 3.6c-.2.2-.5 0-.4-.2l1-4.6H4c-.6 0-1-.5-1-1v-1.1l2.7-6.6c.2-.5.6-.7 1-.7H14c.5 0 1 .5 1 1v8.8c-.1.3-.2.6-.3.8zM19 3h4v12h-4V3z" class="style-scope tp-yt-iron-icon"></path></g></svg>'
+        like.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope tp-yt-iron-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope tp-yt-iron-icon"><path d="M9 21h9c.8 0 1.5-.5 1.8-1.2l3-7.3c.1-.2.2-.4.2-.7V9.7c0-1.1-.9-2.1-2-2.1h-6.3l1-4.7v-.3c0-.4-.2-.8-.4-1.1-.6-.6-1.5-.5-2.1.1L7.6 7.3c-.4.4-.6.9-.6 1.4V19c0 1.1.9 2 2 2zm.3-12.6l3.5-3.6c.2-.2.5 0 .4.2l-1 4.7H20c.6 0 1 .5 1 1v1l-2.7 6.7c-.2.3-.6.6-1 .6H10c-.6 0-1-.5-1-1V9.2c0-.4.1-.6.3-.8zM5 21H1V9h4v12z" class="style-scope tp-yt-iron-icon"></path></g></svg>'
         // like.className = "fa fa-thumbs-up";
         like.style.display = "none";
 
          let disLike = document.createElement("i");
-        disLike.className = "fa fa-thumbs-down";
+        disLike.className = "dislike";
+        disLike.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope tp-yt-iron-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope tp-yt-iron-icon"><path d="M14.9 3H6c-.8 0-1.5.5-1.8 1.2l-3 7.3c-.1.2-.2.4-.2.7v2c0 1.1.9 2 2 2h6.3l-1 4.7v.3c0 .4.2.8.4 1.1.6.7 1.5.7 2.1.1l5.5-5.7c.4-.4.6-.9.6-1.4V5c0-1.1-.9-2-2-2zm-.2 12.6l-3.5 3.6c-.2.2-.5 0-.4-.2l1-4.6H4c-.6 0-1-.5-1-1v-1.1l2.7-6.6c.2-.5.6-.7 1-.7H14c.5 0 1 .5 1 1v8.8c-.1.3-.2.6-.3.8zM19 3h4v12h-4V3z" class="style-scope tp-yt-iron-icon"></path></g></svg>'
         disLike.style.display = "none";
 
         divSongs.append(serialNumber, img, title,duration,like,disLike);
@@ -205,7 +206,7 @@ async function fetchPlaylist(artist, target) {
     document.body.className = "afterClick"
     let divSongs = document.getElementsByClassName("divsongs");
     let like = document.getElementsByClassName("like");
-    let disLike = document.getElementsByClassName("fa-thumbs-down");
+    let disLike = document.getElementsByClassName("dislike");
     let serialNumber = document.getElementsByClassName("serialNumber");
     //show like and dislike button on hover
 

@@ -151,9 +151,11 @@
   content: "\f04b";
   font-size: 15px;
 }
-.like {
+.like,
+.dislike {
   fill: #f3f3f3;
   width: 50px;
-  height: 30px;
+  height: 25px;
   margin-top: 15px;
+  margin-left: -50px;
 }
