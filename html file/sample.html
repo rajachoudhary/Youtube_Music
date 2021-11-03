@@ -7,6 +7,19 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../JS file/sample.js"></script>
+    <audio controls autoplay="1" id="a"></audio>
+    <script type="module">
+        const name = `Current`
+        function a (){
+          setTimeout( () => {
+          console.log("A")
+            const sr = document.createElement("source");
+            sr.src = `../audio/${name}.mp3`;
+            document.getElementById("a").append(sr);
+          }, 5000)
+        }
+        fetch(`http://localhost:3002/download/${name}`).then(a()).catch();
+        // a()
+    </script>
   </body>
 </html>
