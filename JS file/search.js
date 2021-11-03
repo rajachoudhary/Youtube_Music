@@ -1,6 +1,7 @@
 import navbar from "../components/navbar.js";
 import displaySearchBar from "../components/searchBar.js";
 import loadingIndicator from "../components/loadingIndicator.js";
+import createMusicPlayer from "../components/player.js";
 
 // Variables to store data
 let searchResults = {
@@ -110,13 +111,15 @@ const createCard = ( data ) => {
             if ( container.id == item.browseId || container.id == item.videoId ){
                 add.textContent = "Added";
                 addSmall.textContent = "-";
+                add.classList.remove("add-btn");
+                addSmall.classList.remove("add-btn");
             }
         }    
     }
     
     imgOver.className = "img-over";
-    add.className = "add";
-    addSmall.className = "add-small";
+    add.className = "add-btn add";
+    addSmall.className = "add-btn add-small";
 
     footer.append( type, artist );
     meta.append( title, footer );
@@ -249,8 +252,40 @@ const addToLibrary = async (target) => {
     }
 }
 
+{/* <div id="6qbLAG4dbVU" class="detail-card Song">
+    <img src="https://lh3.googleusercontent.com/j-HhhFOJSnlFpBhurVxf8MnCTBXACTIw_IxIAJTA9PZS4LdF08NNOu_lOBH_vQsjSXDq7tmbDSB7rh4=w60-h60-l90-rj">
+        <div class="img-over">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path></svg>
+        </div>
+        <div class="detail-meta">
+            <h1>Car Confessions (Clean)</h1>
+            <div class="detail-footer">
+                <h6>Song</h6>
+                <h6 id="RDAMVM6qbLAG4dbVU">Young M.A</h6>
+            </div>
+        </div>
+    <div class="add">Add to Library</div>
+    <div class="add-small">+</div>
+</div> */}
+
 const clickHandler = (event) => {
     event.preventDefault();
+    if(event.target.parentElement.classList[0] == "img-over" ) {
+        const target = event.target.parentElement.parentElement;
+        const name = target.getElementsByTagName("H1")[0].textContent;
+        const img = target.getElementsByTagName("IMG")[0].src;
+        const artist = target.getElementsByTagName("H6")[1].textContent;
+        // console.log(name, img, artist);
+        // console.log(target)
+        createMusicPlayer(name, img, artist);
+    } else if ( event.target.parentElement.parentElement.classList[0] == "img-over" ){
+        const target = event.target.parentElement.parentElement.parentElement;
+        const name = target.getElementsByTagName("H1")[0].textContent;
+        const img = target.getElementsByTagName("IMG")[0].src;
+        const artist = target.getElementsByTagName("H6")[1].textContent;
+        // console.log(name, img, artist);
+        createMusicPlayer(name, img, artist);
+    }
     const tarClass = event.target.classList;
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
@@ -283,9 +318,11 @@ const clickHandler = (event) => {
                 tabs[0].classList.add("active");
                 tabs[1].classList.remove("active");
             }
-        } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
+        } else if ( tarClass[0] == "add-btn" ) {
             const target = event.target.parentElement;
-            addToLibrary(target)
+            addToLibrary(target);
+            event.target.innerHTML = event.target.innerHTML == "+" ? "-" : "Added";
+            event.target.classList.remove("add-btn");
         }
     }
 }

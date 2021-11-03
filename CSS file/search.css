@@ -48,7 +48,7 @@
     padding-bottom: 0.5rem;
     border-bottom: 0.25px solid #737373;
 }
-.detail-meta > h1:hover, .detail-meta h6:hover, img:hover, .search-heading:hover, .subhead:hover {
+.detail-meta > h1:hover, .detail-meta h6:hover, img:hover, .search-heading:hover, .subhead:hover, svg:hover {
     cursor: pointer;
     color: #939393;
 }

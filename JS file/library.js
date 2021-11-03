@@ -1,4 +1,5 @@
 import loadingIndicator from "../components/loadingIndicator.js";
+import createMusicPlayer from "../components/player.js";
 import navbar from "../components/navbar.js";
 
 // Variables to store data
@@ -34,7 +35,6 @@ const updateLibrary = (id, payload) => {
         .then( res => res.json())
 }
 
-
 const removeFromLibrary = async (target) => {
     try {
         const category = target.classList[1].toLowerCase() + "s";
@@ -59,8 +59,6 @@ const removeFromLibrary = async (target) => {
         errorHandler(err)
     }
 }
-
-
 
 const loadPlaylist = async () => {
     try {
@@ -200,6 +198,13 @@ const handleView = ( event, name ) => {
 
 const clickHandler = (event) => {
     const tarClass = event.target.classList;
+    if ( event.target.tagName == "IMG" && event.target.parentElement.classList[0] == "detail-card" ){
+        const target = event.target;
+        const image = target.src;
+        const name = target.parentElement.getElementsByTagName("h1")[0].textContent;
+        const artist = target.parentElement.getElementsByTagName("h6")[0].textContent;
+        createMusicPlayer(name, image, artist);
+    }
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
         if ( tarClass[2] == "close" ){

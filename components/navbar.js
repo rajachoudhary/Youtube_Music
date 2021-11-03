@@ -8,6 +8,7 @@ const isValidUser = () => {
 const addNavbarStyling = () => {
     const link = document.createElement("link");
     const link2 = document.createElement("link");
+    const link3 = document.createElement("link");
     
     link.rel = "stylesheet";
     link.href = "../CSS file/navbar.css";
@@ -15,7 +16,10 @@ const addNavbarStyling = () => {
     link2.rel = "stylesheet";
     link2.href = "../CSS file/loadingIndicator.css";
     
-    document.head.append(link, link2);
+    link3.rel = "stylesheet";
+    link3.href = "../CSS file/player.css";
+    
+    document.head.append(link, link2, link3);
 } 
 
 const displayIcon = ( { name="Music", target="./index.html", ImgSrc="https://music.youtube.com/img/on_platform_logo.svg" } ) => {
@@ -211,7 +215,6 @@ const displayUserIcon = () => {
         div.className = "nav-user hover";
         container.className = "show-menu hover";
         container.append ( div, createUserMenu() );
-        console.log(container)
     }
 
     return container;
