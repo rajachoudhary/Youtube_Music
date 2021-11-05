@@ -222,10 +222,26 @@ const createMusicPlayer = async ( name, img, artist ) => {
                 max = 0;
             }
             time.textContent = `${formatTime( cur )} / ${ formatTime( max ) }`
-        }, 500)
+        }, 500);
         
         range.addEventListener('change', () => {
             audio.currentTime = range.value;
+        });
+
+        prev.addEventListener("click", () => {
+            if ( audio.currentTime <= 5 ){
+                return;
+            } else {
+                audio.currentTime -= 5;
+            };
+        })
+
+        next.addEventListener("click", () => {
+            if ( audio.currentTime >= audio.duration - 5 ){
+                return;
+            } else {
+                audio.currentTime += 5;
+            };
         })
 
         document.body.append(container);
