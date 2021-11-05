@@ -1,5 +1,17 @@
 import loadingIndicator from "./loadingIndicator.js";
 
+const formatTime = (time) => {
+    let min = Math.floor(time / 60);
+    if(min < 10){
+        min = `0${min}`;
+    }
+    let sec = Math.floor(time % 60);
+    if(sec < 10){
+        sec = `0${sec}`;
+    }
+    return `${min} : ${sec}`;
+}
+
 const nameConverter = (s) => {
     if ( s.length > 78 ){
         s = s.slice(0, 75) + "...";
@@ -29,7 +41,7 @@ const menuOption = () => {
 
     cont.className = "cont-1";
     cont2.className = "cont-2";
-    up.className = "up"
+    up.className = "up";
     container.className = "extra";
     like.classList.add("l1");
     dislike.classList.add("l2");
@@ -77,6 +89,7 @@ const menuOption = () => {
 
 const doesFileExist = async ( urlToFile ) => {
     try {
+        return true;
         const res = await fetch(urlToFile);
         if ( res.status == 200 ) {
             return true;
@@ -88,7 +101,7 @@ const doesFileExist = async ( urlToFile ) => {
     }
 }
 
-const setSrc = (audio, path, play) => {
+const setSrc = ( audio, path, play, isDownloaded ) => {
     audio.src = path;
     audio.play();
     play.innerHTML = `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>`;
@@ -102,23 +115,24 @@ const setSrc = (audio, path, play) => {
             play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
         }
     });
-    setInterval( () => {
-        const a = audio.currentTime;
-        const state = audio.paused;
-        const play = document.getElementById("play");
-        const musicSlider = document.getElementById("music-slider");
-        audio.pause();
-        audio.load();
-        if ( !state ){
-            audio.play();
+    if ( !isDownloaded ) {
+        setInterval( () => {
+            const a = audio.currentTime;
+            const state = audio.paused;
+            const play = document.getElementById("play");
+            audio.pause();
+            audio.load();
+            if ( !state ){
+                audio.play();
+                const musicSlider = document.getElementsByClassName("seek-bar")[0];
+                musicSlider.max = audio.duration;
+                play.innerHTML = `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>`
+            } else {
+                play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
+            }
             audio.currentTime = a + 0.015;
-            const musicSlider = document.getElementById("music-slider");
-            musicSlider.max = audio.duration;
-            play.innerHTML = `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>`
-        } else {
-            play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
-        }
-    }, 20000)
+        }, 20000);
+    }
 }
 
 /**
@@ -151,6 +165,7 @@ const createMusicPlayer = async ( name, img, artist ) => {
         const texts = document.createElement("div");
         const nameCont = document.createElement("div");
         const artistCont = document.createElement("div");
+        const time = document.createElement("div");
         const image = document.createElement("img");
         const range = document.createElement("input");
         const audio = document.createElement("audio");
@@ -177,24 +192,39 @@ const createMusicPlayer = async ( name, img, artist ) => {
         next.className = "ctrl-btn next";
         next.id = "next";
 
+        time.className = "time";
         meta.className = "meta";
         texts.className = "texts";
 
         texts.append( nameCont, artistCont );
         meta.append(image, texts);
         btns.append( prev, play, next)
-        container.append( audio, musicSlider, btns, meta, menuOption() );
+        container.append( audio, musicSlider, btns, time, meta, menuOption() );
         container.id = "music-player"
         
 
         setTimeout( () => {
             range.max = audio.duration;
-        }, 100)
+        }, 100);
 
         setInterval(() => {
             range.value = audio.currentTime;
-        }, 200)
+            if( Math.floor(audio.currentTime) == Math.floor(range.max) ){
+                range.value = 0;
+                play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
+            }
+        }, 200);
 
+        setInterval( () => {
+            let cur = audio.currentTime;
+            let max = audio.duration;
+            if ( !audio ){
+                cur = 0;
+                max = 0;
+            }
+            time.textContent = `${formatTime( cur )} / ${ formatTime( max ) }`
+        }, 500)
+        
         range.addEventListener('change', () => {
             audio.currentTime = range.value;
         })
@@ -203,14 +233,14 @@ const createMusicPlayer = async ( name, img, artist ) => {
 
         loadingIndicator("play", true);
         if ( flag ) {
-            setSrc(audio, path, play);
+            setSrc(audio, path, play, flag);
         } else {
             const id = setInterval( async () => {
                 if ( await doesFileExist(path) ){
-                    setSrc(audio, path, play);
+                    setSrc(audio, path, play, flag);
                     clearInterval(id);
                 }
-            }, 10000);
+            }, 7000);
         }
     } catch ( err ) {
         let container = document.getElementById("music-player");
