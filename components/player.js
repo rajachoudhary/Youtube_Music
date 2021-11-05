@@ -105,7 +105,8 @@ const setSrc = (audio, path, play) => {
     setInterval( () => {
         const a = audio.currentTime;
         const state = audio.paused;
-        const play = document.getElementById("play")
+        const play = document.getElementById("play");
+        const musicSlider = document.getElementById("music-slider");
         audio.pause();
         audio.load();
         if ( !state ){
@@ -167,7 +168,7 @@ const createMusicPlayer = async ( name, img, artist ) => {
         musicSlider.append(range);
         musicSlider.className = "music-slider";
         audio.id = "audio";
-        nameCont.id = "name";
+        nameCont.id = "player-name";
         btns.className = "btns";
         prev.className = "ctrl-btn prev";
         prev.id = "prev";

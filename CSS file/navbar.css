@@ -99,31 +99,30 @@
     color: white;
     fill: white;
     width: 12rem;
-    padding: 1rem 1rem 1rem;
     height: 27rem;
     width: 15rem;
+    z-index: 1000;
     display: none;
 }
-.menu > hr {
-    width: 115%;
-    position: relative;
-    top:-0.5rem;
-    left: -1rem;
-}
 .menu-line {
+    padding: 0rem 1rem 0rem;
     display: flex;
+    font-size: 1.15rem;
     gap: 0.75rem;
     height: 3rem;
 }
 .menu-icon {
-    margin-top: -1rem;
+    margin-top: 0rem;
     width: 2rem;
 }
 .menu-text {
-    margin-top: 0.25rem;
+    margin-top: 0.65rem;
+}
+.menu-line:hover {
+    background-color: #212121;
 }
 
-.active-page, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {
+.active-page, .active-page > .nav-icons, .active-page > .nav-md-logo, .hover:hover, .nav-md-logo:hover, .nav-icons:hover {
     color: #f3f3f3;
     cursor: pointer;
     fill: white;
@@ -155,10 +154,14 @@
 }
 .search-bar > input {
     background-color: initial;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     padding: 0rem 0.5rem;
     width: 94%;
     height: 2rem;
+    position: absolute;
+    top: 0.75rem;
+    z-index: 10;
+    left: 4rem;
     border: none;
     color: white;
 }
@@ -169,7 +172,7 @@
 /* Suggestions */
 #suggestions {
     position: absolute;
-    padding: 0.3rem 0rem;
+    padding: 0rem 0rem;
     top: 3.68rem;
     left: 0rem;
     width: 100%;
@@ -188,9 +191,10 @@
     height: 2rem;
     font-size: 1.25rem;
 }
-.suggest:hover {
+.suggest:hover, .suggest:focus, .menu > div:hover {
     cursor: pointer;
     background: #f3f3f32e;
+    color: #f3f3f3;
 }
 .suggest-text {
     width: 100%;

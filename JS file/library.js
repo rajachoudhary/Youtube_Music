@@ -220,6 +220,7 @@ const clickHandler = (event) => {
         } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
             const target = event.target.parentElement;
             removeFromLibrary(target)
+            target.style.display = "none";
         }
     }
 }

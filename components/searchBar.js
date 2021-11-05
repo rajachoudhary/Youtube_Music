@@ -27,6 +27,13 @@ const createSuggestCard = (item) => {
     suggestElem.className = "suggest";
     
     suggestElem.append( searchIcon, div );
+    suggestElem.addEventListener("keyup", () => {
+        if ( event.code == "Enter" ){
+            localStorage.setItem("q", div.textContent);
+            window.location.href = "./search.html";
+        }
+        event.stopImmediatePropagation();
+    });
     return suggestElem;        
 }
 
@@ -42,6 +49,7 @@ const displaySuggestion = async () => {
         const frag = new DocumentFragment();
         for ( const item of suggestion ){
             const suggestElem = createSuggestCard(item);
+            suggestElem.tabIndex = "0";
             frag.append( suggestElem );
         }
         container.innerHTML = ""
@@ -56,6 +64,7 @@ const suggestionDebouncer = debouncer( displaySuggestion, 300 );
 
 const handleInput = () => {
     if ( event.code == "Enter" ){
+        const suggests = document.getElementsByClassName("suggest");
         const q = document.getElementsByClassName("search-bar")[0].querySelector("input").value;
         if ( q.length < 1 ){
             return;
@@ -63,7 +72,8 @@ const handleInput = () => {
         localStorage.setItem("q", q);
         window.location.href = "./search.html";
         event.stopImmediatePropagation();
-    } else {
+    } else if ( event.code !== "Tab" ) {
+
         suggestionDebouncer();
     }
 }
@@ -102,7 +112,7 @@ const displaySearchBar = () => {
         }
     });
     
-    input.addEventListener( "keyup", handleInput);
+    container.addEventListener( "keyup", handleInput);
 
     container.append( searchBa );
 }

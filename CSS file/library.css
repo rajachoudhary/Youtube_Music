@@ -38,6 +38,9 @@
 #error-page img {
     margin-bottom: 2rem;
 }
+.detail-card:hover > .img-over > svg, .detail-card:hover > .add {
+    display: block;
+}
 /* .big-detail {
     display: flex;
     flex-direction: row;
