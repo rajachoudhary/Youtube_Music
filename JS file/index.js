@@ -1,11 +1,13 @@
 import navbar from "../components/navbar.js";
-
+import createMusicPlayer from "../components/player.js";
 var count = 1;
 window.addEventListener("load", async()=>{
     document.body.querySelector("nav").append(navbar({ pageTitle: "Home"}))
    const res1 = await quickPicks("arjit")
    
-   displayMyFavourite({...res1})
+    displayMyFavourite({ ...res1 })
+   
+    console.log(10)
     // quickPicks("jubin")
 })
 
