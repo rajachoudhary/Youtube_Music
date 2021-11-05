@@ -36,13 +36,12 @@
       "id": 5
     },
     {
-      "firstName": "laudu",
-      "lastName": "raja",
-      "emailId": "raja_pw1_066@masai.school",
-      "password": "rajalalit",
+      "firstName": "Ravi",
+      "lastName": "Shukla",
+      "emailId": "rshuklabbb@gmail.com",
+      "password": "12345678",
       "id": 6
     }
   ],
-  "library": [
-  ]
+  "library": []
 }

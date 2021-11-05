@@ -1,3 +1,19 @@
+function handleMsg(msg, isError){
+    const container = document.createElement("div");
+    const msgCont = document.createElement("div");
+    msgCont.textContent = msg;
+    container.className = "msg";
+    if ( isError ) container.className += " error";
+    container.append( msgCont );
+    document.body.append( container );
+    setTimeout( () => {
+        container.className += " fade-out";
+    }, 3000);
+    setTimeout( () => {
+        document.body.getElementsByClassName("msg")[0].remove()
+    }, 5500);
+}
+
 async function login()
 {
     let emailId = document.getElementById("email").value;
@@ -10,19 +26,20 @@ async function login()
         .then(res => {
             if (res[0].password == password)
             {
-                alert("Login successfully");
+                handleMsg("Login Successful", false);
                 localStorage.setItem('User', JSON.stringify(res[0]));
-                console.log(res[0].firstName);
                 document.getElementById("email").value = "";
                 document.getElementById("pass").value = "";
-                window.open("index.html");
+                window.location.href = "index.html";
             }
-            else
-                alert("Incorrect Password");
+            else{
+                document.getElementById("pass").focus();
+                handleMsg("Incorrect Password", true);
+            }
         })
         .catch(error => {
-            alert("Your Email Id is not registered");
-    })
+            handleMsg("Your Email Id is not registered", true);
+        })
 
 }
 window.addEventListener("load", function ()
