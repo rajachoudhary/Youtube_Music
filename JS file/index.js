@@ -6,7 +6,12 @@ var count = 1;
 window.addEventListener("load", async()=>{
     document.body.querySelector("nav").append(navbar({ pageTitle: "Home"}))
    const res1 = await quickPicks("arjit")
+
+   
+  
+
    displayMyFavourite({...res1})
+
     // quickPicks("jubin")
 })
 

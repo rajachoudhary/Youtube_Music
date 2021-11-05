@@ -1,3 +1,5 @@
+import createMusicPlayer from "../components/player.js";
+
 async function newReleases(fun) {
     try {
         let res = await fetch("http://localhost:3002/search/album/new%20releases%20hindi");
@@ -21,7 +23,7 @@ function showData(data) {
         slideImages.className = "slider";
         for (let j = i; j < i + 5; j++) {
             let div = document.createElement("div");
-
+             div.className = "songsDiv";
             let img = document.createElement("img");
 
 
@@ -35,7 +37,13 @@ function showData(data) {
             let artist = document.createElement("p");
             artist.className = "songs"
             artist.innerHTML = data[j].artist;
-            div.append(img, title, artist);
+              let playImg = document.createElement("div");
+            playImg.className = "playImg";
+            playImg.style.display = "none";
+            playImg.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8 5v14l11-7z" class="style-scope yt-icon"></path></g></svg>'
+            div.append(img,playImg, title, artist);
+
+            
 
             let buttonLeft = document.createElement("div");
             let leftBtnImg = document.createElement("img");
@@ -64,7 +72,35 @@ function showData(data) {
         container.append(slideImages);
 
     }
+     let songsDiv = document.getElementsByClassName("songsDiv");
+     let playImg = document.getElementsByClassName("playImg");
+    console.log('songsDiv:', songsDiv.length);
+     for (let k = 0; k < songsDiv.length; k++)
+     {
 
+         songsDiv[k].onmouseover = () => {
+             playImg[k].style.display ="block" ;
+
+         }
+         }
+
+      for (let i = 0; i < songsDiv.length; i++)
+     {
+         songsDiv[i].onmouseleave = () => { 
+             playImg[i].style.display ="none" ;
+         }
+         }
+
+     for (let k = 0; k < playImg.length; k++)
+     {
+         playImg[k].onclick = () => {
+             console.log(playImg[k]);
+             createMusicPlayer(data[k].name,data[k].thumbnails[2].url,data[k].artist)
+         }
+
+         }
+
+    
     let slideIndex = 1;
     showDivs(slideIndex);
 
@@ -102,7 +138,7 @@ function showContainer(container, hideDiv,heading) {
     for (let i = 0; i < container.length; i++) {
         container[i].onclick = () => {
 
-            console.log(hideDiv);
+            // console.log(hideDiv);
             if (hideDiv != undefined) {
                 hideDiv.style.display = "none";
             }
@@ -116,9 +152,9 @@ function showContainer(container, hideDiv,heading) {
     }
 
 }
-async function fetchPlaylist(artist, target) {
+async function fetchPlaylist(artistname, target) {
     //  console.log(this.innerHTML);
-    let relatedSongs = await fetch(`http://localhost:3002/search/song/${artist}`);
+    let relatedSongs = await fetch(`http://localhost:3002/search/song/${artistname}`);
     let getPlaylist = await relatedSongs.json();
     let content = getPlaylist.content;
     console.log(content[0])
@@ -137,6 +173,7 @@ async function fetchPlaylist(artist, target) {
     let playlistTitleContent = document.createElement("div");
     let playlistTitleContentHeading = document.createElement("h1");
     playlistTitleContentHeading.innerHTML = content[0].album.name;
+
    
     //play Button
 
@@ -176,6 +213,8 @@ async function fetchPlaylist(artist, target) {
         img.src = content[i].thumbnails[0].url;
         let title = document.createElement("p");
         title.innerHTML = content[i].name;
+       
+
         let duration = document.createElement("p");
         let min = Math.floor((content[i].duration) / 1000 / 60);
         totalMin += min;
@@ -199,6 +238,9 @@ async function fetchPlaylist(artist, target) {
         let whiteLine = document.createElement("div");
         whiteLine.className = "whiteLine";
         playlistDisplay.append(divSongs, whiteLine);
+        
+
+        
     }
     console.log("Total Min", totalMin);
     playlistTitleContentDuration.innerHTML = `20 songs . ${totalMin} minutes`;
@@ -214,11 +256,20 @@ async function fetchPlaylist(artist, target) {
          {
              divSongs[j].onmouseover = () => {
                  like[j].style.display = "inline";
-                 disLike[j].style.display = "inline";
-                //  serialNumber[j].innerHTML = "";
-                 console.log(serialNumber[j].innerHTML);
-                //  serialNumber[j].className="fa fa-play"
-            }
+                 disLike[j].style.display = "inline"; 
+             }
+        //       divSongs[j].onclick = () => {
+        //     if (content[j].artist.name != undefined)
+        // {
+        //     var artistName = content[j].artist.name;  
+        //     }
+        // else if(content[j].artist.length!=0)
+        // {
+        //         var artistName = content[j].artist[0].name;
+        //           }
+        //            console.log("title",content[j].name);
+        //  createMusicPlayer(content[j].name, content[j].thumbnails[0].url, artistName);
+        //     }
     }
     //disable like and dislike button on mouseout
     
@@ -227,10 +278,7 @@ async function fetchPlaylist(artist, target) {
              divSongs[j].onmouseout = () => {
                  like[j].style.display = "none";
                  disLike[j].style.display = "none";
-                  console.log(serialNumber[j].innerHTML);
-                //  serialNumber[j].innerHTML = "";
-                //  serialNumber[j].removeAttribute("class");
-                //  serialNumber[j].className = "serialNumber";
+               
             }
     }
     

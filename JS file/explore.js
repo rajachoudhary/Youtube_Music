@@ -1,3 +1,4 @@
+import createMusicPlayer from "../components/player.js";
 
 import navbar from "../components/navbar.js";
 window.addEventListener("load", ()=>{
@@ -39,7 +40,7 @@ async function newAlbums(fun) {
     try {
         let res = await fetch("http://localhost:3002/search/album/new releases hindi albums");
         let data = await res.json();
-        //  console.log(data.content);
+         console.log(data.content);
         fun(data.content);
         return data.content;
     }
@@ -51,14 +52,14 @@ async function newAlbums(fun) {
  function showData(data) {
 
     let container = document.getElementById("container");
-
+     console.log(data);
     for (let i = 0; i < 10; i += 5) {
         let slideImages = document.createElement("div");
 
         slideImages.className = "slider";
         for (let j = i; j < i + 5; j++) {
             let div = document.createElement("div");
-
+             div.className = "songsDiv";
             let img = document.createElement("img");
 
 
@@ -72,7 +73,12 @@ async function newAlbums(fun) {
             let artist = document.createElement("p");
             artist.className = "songs"
             artist.innerHTML = data[j].artist;
-            div.append(img, title, artist);
+             let playImg = document.createElement("div");
+            playImg.className = "playImg";
+            playImg.style.display = "none";
+            playImg.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8 5v14l11-7z" class="style-scope yt-icon"></path></g></svg>'
+            div.append(img,playImg, title, artist);
+            
 
             let buttonLeft = document.createElement("div");
             let leftBtnImg = document.createElement("img");
@@ -102,6 +108,36 @@ async function newAlbums(fun) {
 
     }
 
+     let songsDiv = document.getElementsByClassName("songsDiv");
+     let playImg = document.getElementsByClassName("playImg");
+    console.log('songsDiv:', songsDiv.length);
+     for (let i = 0; i < songsDiv.length; i++)
+     {
+        songsDiv[i].onmouseover = () => {  
+        playImg[i].style.display ="block" ;
+         }
+
+
+         }
+
+      for (let i = 0; i < songsDiv.length; i++)
+     {
+
+         songsDiv[i].onmouseleave = () => {
+            
+             playImg[i].style.display ="none" ;
+
+         }
+
+
+     }
+     for (let k = 0; k < playImg.length; k++) {
+         playImg[k].onclick = () => {
+             console.log(playImg[k]);
+             createMusicPlayer(data[k].name, data[k].thumbnails[2].url, data[k].artist)
+         }
+     }
+     
     let slideIndex = 1;
     showDivs(slideIndex);
 
@@ -135,11 +171,12 @@ async function newAlbums(fun) {
 newAlbums(showData);
 
 //Moods & genres
-
+let main = document.getElementsByTagName("main")[0];
 let moodsHeading = document.createElement("h1");
 moodsHeading.innerHTML = "Moods & genres";
 moodsHeading.className = "moodsHeading";
-document.body.append(moodsHeading);
+main.append(moodsHeading);
+// document.body.append(moodsHeading);
 let moodsDiv = document.createElement("div");
 moodsDiv.className = "moodsDiv";
 let Chill = document.createElement("div");
@@ -221,9 +258,10 @@ let English = document.createElement("div");
 English.innerHTML = "English";
 English.className = "moodsDivChild";
 moodsDiv.append(Chill, Focus, Workout, Bhojpuri, Decades, Hindi, Commute, Party, African, Classical, Folk, hipHop, energyBoost, Romance, Arabic, Ghazal, Haryanvi, Marathi, Punjabi, Rock, Sleep, Jazz, Gujarati, Tamil,English);
-document.body.append(moodsDiv);
+main.append(moodsDiv);
 
 let moodsDivChild = document.getElementsByClassName("moodsDivChild");
+// console.log(moodsDivChild,0)
 for (let i = 0; i < moodsDivChild.length; i++)
 {
     if (i % 4 == 0)
@@ -234,5 +272,78 @@ for (let i = 0; i < moodsDivChild.length; i++)
         moodsDivChild[i].style.borderLeft = " 5px solid rgb(204,0,0)";
      else if (i % 4 == 3)
         moodsDivChild[i].style.borderLeft = " 5px solid rgb(226,75,0)";
+    
+}
+
+for (let k = 0; k < moodsDivChild.length; k++)
+{
+    moodsDivChild[k].onclick = () => {
+        main.style.display = "none";
+        let heading = document.createElement("h3");
+        heading.innerHTML = moodsDivChild[k].innerHTML;
+      
+        let featPlay = document.createElement("h3");
+        featPlay.innerHTML = "Featured playlists";
+        featPlay.id = "moodsPlay";
+        document.body.append(heading, featPlay);
+          heading.id = "moodsTitle";
+        let title = heading.innerHTML;
+        console.log(title);
+        async function newMoods(title) {
+    try {
+        let res = await fetch(`http://localhost:3002/search/playlist/${title}`);
+        let data = await res.json();
+        console.log(data.content);
+        createPlaylist(data.content);
+        // return data.content;
+    }
+    catch {
+
+    }
+        }
+        newMoods(title);
+          function createPlaylist(data)
+    {
+              let createDiv = document.createElement("div");
+              createDiv.className = "createPlaylistDiv";
+              for (var i = 0; i < data.length; i++)
+              {
+                  let playListChild = document.createElement("div");
+                  playListChild.className = "playListChild";
+                    let playButton = document.createElement("div");
+            playButton.className = "playButton";
+            playButton.style.display = "none";
+            playButton.innerHTML='<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M8 5v14l11-7z" class="style-scope yt-icon"></path></g></svg>'
+                 
+                  let img = document.createElement("img");
+                  img.src = data[i].thumbnails[2].url;
+                  let author = document.createElement("p");
+                  author.innerHTML = data[i].author;
+                  let titlePlayList = document.createElement("p");
+                  titlePlayList.innerHTML = data[i].title;
+                 
+                  playListChild.append(img,titlePlayList,author,playButton);
+                  createDiv.appendChild(playListChild);
+              }
+              document.body.append(createDiv);
+              let playListChild = document.getElementsByClassName("playListChild");
+              let playButton = document.getElementsByClassName("playButton");
+              for (let j = 0; j < playListChild.length; j++)
+              {
+                
+                  playListChild[j].onmouseenter = () => {
+                   
+                         playButton[j].style.display = "block";
+                  }
+              }
+              
+                for (let j = 0; j < playListChild.length; j++)
+              {
+                   playListChild[j].onmouseleave = () => {
+                        playButton[j].style.display ="none" ;
+                  }
+                  }
+    }
+    }
     
 }

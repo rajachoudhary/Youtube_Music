@@ -12,8 +12,13 @@ const API_KEYS = [
     "AIzaSyDb9qA-cBCQI6Goi0TJRy7qnBMRAgRzgdw",
     "AIzaSyDoKuHzZmp-UO0RxXytDEfxpBH5ZRWVsoU",
     "AIzaSyC9dpMKJjHBjr8IcVVA27evKundh65GXqc",
+    "AIzaSyAjG5VFLmygsWW20tG0K6TR5ApGEzgsiMI"
 ]
-let curr = 0;
+
+let curr = 3;
+
+
+
 
 const fetchSearchQuery = (q) => {
     q += " song"
