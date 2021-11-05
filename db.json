@@ -34,8 +34,16 @@
       "emailId": "sachin10@gmail.com",
       "password": "sachin123",
       "id": 5
+
+    },
+    {
+      "firstName": "Ravi",
+      "lastName": "Shukla",
+      "emailId": "rshuklabbb@gmail.com",
+      "password": "12345678",
+      "id": 6
+
     }
   ],
-  "library": [
-  ]
+  "library": []
 }
