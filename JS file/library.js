@@ -143,8 +143,8 @@ const createCard = ( data ) => {
     //     container.classList.add("big-container");
     // }
 
-    meta.append( imgOver, title, artist );
-    container.append( img, meta, add, addSmall );
+    meta.append( title, artist );
+    container.append( img, imgOver, meta, add, addSmall );
     return container;
 }
 
@@ -220,6 +220,7 @@ const clickHandler = (event) => {
         } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
             const target = event.target.parentElement;
             removeFromLibrary(target)
+            target.style.display = "none";
         }
     }
 }

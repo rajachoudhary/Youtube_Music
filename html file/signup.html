@@ -1,69 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Your Google Account</title>
-    <link rel="stylesheet" href="..\CSS file\signup.css" />
-  </head>
-  <body>
-    <div id="container">
-      <div id="logo">
-        <img
-          id="google"
-          src="https://cdn.vox-cdn.com/thumbor/Ous3VQj1sn4tvb3H13rIu8eGoZs=/0x0:2012x1341/1400x788/filters:focal(0x0:2012x1341):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg"
-          alt=""
-          border="0"
-        />
-      </div>
-      <h3>Create your Google Account</h3>
-      <p>to continue to YouTube</p>
-      <div id="name">
-        <input
-          type="text"
-          id="firstname"
-          placeholder=" "
-          spellcheck="false"
-          required
-        />
-        <label for="">First name</label>
-        <input
-          type="text"
-          id="lastname"
-          placeholder=" "
-          spellcheck="false"
-          required
-        />
-        <label for="">Last name</label>
-      </div>
-      <div>
-        <input
-          type="email"
-          id="email"
-          placeholder=" "
-          spellcheck="false"
-          required
-        />
-        <label for="">Email</label>
-        <p>You'll need to confirm that this email belongs to you.</p>
-      </div>
-      <div id="password">
-        <input type="password" id="pass" placeholder=" " required />
-        <label for="">Password</label>
-        <input type="password" name="" id="confirm" placeholder=" " required />
-        <label for="">Confirm</label>
-        <p>
-          Use 8 or more characters with a mix of letters, numbers & symbols.
-        </p>
-        <br />
-        <input type="checkbox" id="showPassword" />Show password
-      </div>
-      <div id="foot">
-        <a href="../html file/login.html" id="link">Sign in instead</a>
-        <button id="register">Next</button>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Your Google Account</title>
+  <link rel="stylesheet" href="..\CSS file\signup.css" />
+</head>
+
+<body>
+  <div id="container">
+    <div id="logo">
+      <img id="google"
+        src="https://cdn.vox-cdn.com/thumbor/Ous3VQj1sn4tvb3H13rIu8eGoZs=/0x0:2012x1341/1400x788/filters:focal(0x0:2012x1341):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg"
+        alt="" border="0" />
     </div>
-    <script src="../JS file/signup.js"></script>
-  </body>
+    <h3>Create your Google Account</h3>
+    <p>to continue to YouTube</p>
+    <div id="name">
+      <input type="text" id="firstname" placeholder=" " spellcheck="false" required />
+      <label for="">First name</label>
+      <input type="text" id="lastname" placeholder=" " spellcheck="false" required />
+      <label for="">Last name</label>
+    </div>
+    <div>
+      <input type="email" id="email" placeholder=" " spellcheck="false" required />
+      <label for="">Email</label>
+      <p>You'll need to confirm that this email belongs to you.</p>
+    </div>
+    <div id="password">
+      <input type="password" id="pass" placeholder=" " required />
+      <label for="">Password</label>
+      <input type="password" name="" id="confirm" placeholder=" " required />
+      <label for="">Confirm</label>
+      <p>
+        Use 8 or more characters with a mix of letters, numbers & symbols.
+      </p>
+      <br />
+      <input type="checkbox" id="showPassword" />Show password
+    </div>
+    <div id="foot">
+      <a href="../html file/login.html" id="link">Sign in instead</a>
+      <button id="register">Next</button>
+    </div>
+  </div>
+  <script src="../JS file/signup.js"></script>
+</body>
+
 </html>

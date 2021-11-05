@@ -91,7 +91,7 @@ a {
 #confirm:not(:placeholder-shown) + label,
 #confirm:focus + label {
   top: -1.2rem;
-  color: gray;
+  color: #1f52f9;
   font-weight: 500px;
   background: none;
   z-index: 10;
@@ -147,4 +147,50 @@ a {
 }
 #register:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+}
+.msg {
+  position: absolute;
+  top: 2rem;
+  left: 20%;
+  width: 60%;
+  padding: 2rem 0rem;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  border: 0.25px solid gray;
+  height: 3rem;
+  font-size: 2.5rem;
+  background-color: #008744;
+}
+.msg > div {
+  margin-top: -1.5rem;
+}
+.error {
+  background-color: #d62d20;
+}
+.fade-out {
+  animation: fadeOut 2.5s ease;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0;
+  }
+}
+#showPassword:hover, #link:hover, #register:hover {
+  cursor: pointer;
+}
+
+@media screen and ( max-width: 1000px ) {
+  .msg {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media screen and ( max-width: 700px ) {
+  .msg {
+    font-size: 1rem;
+  }
 }

@@ -134,9 +134,9 @@ const displaydetails = (data, target, k) => {
     const see = document.createElement("h2");
     const frag = document.createElement("div");
 
-    name.textContent = data[1].type || data[0].type + "s";
+    name.textContent = data[1].type || data[0].type;
     if ( name.textContent == "a" ) name.textContent = "Artist";
-    name.textContent = name.textContent[0].toUpperCase() + name.textContent.slice(1);
+    name.textContent = name.textContent[0].toUpperCase() + name.textContent.slice(1) + "s";
     see.textContent = "SHOW ALL";
 
     name.className = "search-heading";
@@ -359,7 +359,7 @@ const loadPlaylist = async () => {
 }
 
 const handleLoad = () => {
-    document.body.querySelector("nav").append(navbar({ pageTitle: "search" }));
+    document.body.querySelector("nav").append(navbar({ pageTitle: "Search" }));
     displaySearchBar();
     const input = document.getElementsByClassName("search-bar")[0].querySelector("input");
     input.value = localStorage.getItem("q");

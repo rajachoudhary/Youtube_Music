@@ -1,0 +1,10 @@
+.authorName,.songName{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.top100img>img{
+    height: 264px;
+    width: 264px;
+   
+}

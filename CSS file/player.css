@@ -22,9 +22,9 @@
 }
 .play {
   height: 5.5rem;
-  width: 5.5rem;
+  width: 5rem;
   position: relative;
-  top: -1.85rem;
+  top: -1.7rem;
 }
 .play:hover {
     padding: 0px;
@@ -58,23 +58,25 @@
   flex-direction: column;
 }
 .meta {
-  /* position: relative; */
-  margin-top: -1.7rem;
+  position: absolute;
+  bottom: 0rem;
   height: 6rem;
   gap: 1.25rem;
+  left: 28%;
   display: flex;
 }
 .extra {
   display: flex;
-  /* position: fixed; */
+  position: fixed;
   height: 3rem;
   bottom: 1.5rem;
-  left: 50%;
+  left: 63%;
   fill: white;
-  gap: 7rem;
+  gap: 5rem;
+  min-width: 40%;
 }
 #player-name {
-  max-width: 17rem;
+  max-width:  30rem;
   overflow-x: hidden;
   overflow-y: hidden;
   -webkit-overflow-scrolling: hidden;
@@ -87,11 +89,11 @@
 }
 .cont-1 {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 .cont-2 {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 .l1 {
     position: relative;
@@ -112,9 +114,23 @@
 .up:active {
     transform: rotate(0deg);
 }
+.time {
+  position: absolute;
+  left: 14rem;
+  font-size: 1.25rem;
+}
 @media screen and ( max-width: 1100px ) {
     .cont-1 {
         display: none;
+    }
+    .extra {
+      left: 75%;
+    }
+    .meta {
+      left: 35%;
+    }
+    #player-name {
+      max-width: 20rem;
     }
 }
 @media screen and ( max-width: 900px ) {
@@ -122,20 +138,29 @@
         display: none;
     }
     .extra {
-        left: 75%
+        left: 35rem
     }
     .meta {
         left: 45%
     }
+    #player-name {
+      max-width: 20rem;
+    }    
 }
 @media screen and ( max-width: 700px) {
     .cont-1{
         display: none;
     }
     .extra {
-        left: 75%
+        left: 24rem;
+    }
+    .time {
+      left: 12.5rem;
     }
     .meta {
-        left: 50%;
+        left: 55%;
+    }
+    #player-name {
+      max-width: 10rem;
     }
 }

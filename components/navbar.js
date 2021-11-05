@@ -105,6 +105,8 @@ const displayMainBar = ( pageTitle ) => {
         upgrade.className = "hide";
     }
 
+    const search = displaySearch();
+
     let mainPage = true;
 
     switch ( pageTitle ) {
@@ -120,6 +122,10 @@ const displayMainBar = ( pageTitle ) => {
         case "Upgrade":
             upgrade.className += " active-page";
             break;
+        case "Search":
+            search.className += " active-page";
+            mainPage = false;
+            break;
         default:
             mainPage = false;
             break; 
@@ -128,8 +134,6 @@ const displayMainBar = ( pageTitle ) => {
     if ( mainPage ){
         localStorage.removeItem("q");
     }
-
-    const search = displaySearch();
 
     pages.className = "pages flex";
     container.className = "main-bar flex";
