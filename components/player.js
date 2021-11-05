@@ -89,7 +89,6 @@ const menuOption = () => {
 
 const doesFileExist = async ( urlToFile ) => {
     try {
-        return true;
         const res = await fetch(urlToFile);
         if ( res.status == 200 ) {
             return true;
