@@ -217,7 +217,7 @@ const createMusicPlayer = async ( name, img, artist ) => {
         setInterval( () => {
             let cur = audio.currentTime;
             let max = audio.duration;
-            if ( !audio ){
+            if ( !audio.duration ){
                 cur = 0;
                 max = 0;
             }

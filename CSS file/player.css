@@ -62,7 +62,7 @@
   bottom: 0rem;
   height: 6rem;
   gap: 1.25rem;
-  left: 24%;
+  left: 28%;
   display: flex;
 }
 .extra {
@@ -117,6 +117,7 @@
 .time {
   position: absolute;
   left: 14rem;
+  font-size: 1.25rem;
 }
 @media screen and ( max-width: 1100px ) {
     .cont-1 {

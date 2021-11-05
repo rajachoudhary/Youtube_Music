@@ -41,6 +41,21 @@
 .detail-card:hover > .img-over > svg, .detail-card:hover > .add {
     display: block;
 }
+
+/* overlay */
+.img-over {
+    left: -5rem;
+    width: 1rem;
+}
+.img-over > svg {
+    position: relative;
+    top: 0rem;
+    left: -5rem;
+    height: 4rem;
+    width: 4rem;
+    display: none;
+    background: #00000091;
+}
 /* .big-detail {
     display: flex;
     flex-direction: row;
@@ -91,6 +106,12 @@
 @media screen and ( max-width:1100px) {
     .error {
         left: 5rem;
+    }
+    .detail-card:hover > .add {
+        display: none;
+    }
+    .detail-card:hover > .add-small {
+        display: block;
     }
 }
 
