@@ -38,7 +38,24 @@
 #error-page img {
     margin-bottom: 2rem;
 }
-.detail-card:hover > .img-over > svg, .detail-card:hover > .add {
+.detail-card:hover > .img-over > svg{
+    display: block;
+}
+.detail-card:hover > .add-cont {
+    display: flex;
+}
+.add-cont {
+    position: absolute;
+    color: #232323;
+    display: none;
+    
+}
+.add {
+    width: 2rem;
+    fill: #232323;
+}
+.add-small {
+    max-width: 30rem;
     display: block;
 }
 
@@ -107,16 +124,19 @@
     .error {
         left: 5rem;
     }
-    .detail-card:hover > .add {
+    .detail-card:hover .add-small {
         display: none;
     }
-    .detail-card:hover > .add-small {
-        display: block;
+    .add-cont {
+        left: 85%;
     }
 }
 
 @media screen and ( max-width:700px) {
     .error {
         left: 1rem;
+    }
+    .add-cont {
+        left: 95%;
     }
 }
