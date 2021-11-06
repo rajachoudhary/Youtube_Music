@@ -45,13 +45,47 @@
   ],
   "library": [
     {
+      "id": 1,
       "parentId": 1,
-      "songs": [],
+      "songs": [
+        {
+          "type": "song",
+          "videoId": "MGuM2SlZBJ4",
+          "playlistId": "RDAMVMMGuM2SlZBJ4",
+          "name": "Turn Down for What",
+          "artist": [
+            {
+              "name": "DJ Snake",
+              "browseId": "UC0c4bK_92XYr0YtASqqWOJg"
+            },
+            {
+              "name": "Lil Jon",
+              "browseId": "UC-TDzpXxJndgBvyX4dZXVzA"
+            }
+          ],
+          "album": {
+            "name": "DJ Snake",
+            "browseId": "UC0c4bK_92XYr0YtASqqWOJg"
+          },
+          "duration": 214000,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/lojJkFjQwAeRHDtndDXxM99xsXak4QuutrmW0bUF-y3vNOAKUHFowlnkJ_WDiEL6ML9Y6K5ZYc1S0wOLew=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/lojJkFjQwAeRHDtndDXxM99xsXak4QuutrmW0bUF-y3vNOAKUHFowlnkJ_WDiEL6ML9Y6K5ZYc1S0wOLew=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ],
+          "params": "wAEB"
+        }
+      ],
       "artists": [],
       "playlists": [],
-      "videos": [],
-      "id": 1
+      "videos": []
     }
-
   ]
 }
