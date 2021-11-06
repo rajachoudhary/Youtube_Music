@@ -1,44 +1,42 @@
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
-#index1stContainer{
-    padding-top: 100px;
-    /* width: 100%; */
-    margin: auto;
-    justify-content: center  ;
-}
-
-.urlspace{    
-    width: 18%;
+#index1stContainer {
+  padding-top: 100px;
+  /* width: 100%; */
+  margin: auto;
+  justify-content: center;
 }
 
-.innerDiv{
-    
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis 
-    
-}
-#rightButton1{
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    border-radius: 19px;
-    margin-left: 1270px;
-    margin-top: 165px;
+.urlspace {
+  width: 18%;
 }
 
-#leftButton2{
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    border-radius: 19px;
-    margin-top: 160px;
-    margin-right: 1180px ;
+.innerDiv {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#rightButton1 {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 19px;
+  margin-left: 1110px;
+  margin-top: 165px;
+}
+
+#leftButton2 {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 19px;
+  margin-top: 160px;
+  margin-right: 1300px;
 }
 
 /* --------------------Charts------------------------- */
-#top100Songs>img{
-    height: 196px;
-    width: 196px;
+#top100Songs > img {
+  height: 196px;
+  width: 196px;
 }
