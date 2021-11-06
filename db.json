@@ -44,5 +44,14 @@
     }
   ],
   "library": [
+    {
+      "parentId": 1,
+      "songs": [],
+      "artists": [],
+      "playlists": [],
+      "videos": [],
+      "id": 1
+    }
+
   ]
 }
