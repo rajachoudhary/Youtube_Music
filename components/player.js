@@ -89,6 +89,7 @@ const menuOption = () => {
 
 const doesFileExist = async ( urlToFile ) => {
     try {
+        return true;
         const res = await fetch(urlToFile);
         if ( res.status == 200 ) {
             return true;
@@ -123,8 +124,6 @@ const setSrc = ( audio, path, play, isDownloaded ) => {
             audio.load();
             if ( !state ){
                 audio.play();
-                const musicSlider = document.getElementsByClassName("seek-bar")[0];
-                musicSlider.max = audio.duration;
                 play.innerHTML = `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>`
             } else {
                 play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
@@ -202,17 +201,17 @@ const createMusicPlayer = async ( name, img, artist ) => {
         container.id = "music-player"
         
 
-        setTimeout( () => {
+        setInterval( () => {
             range.max = audio.duration;
-        }, 100);
+        }, 10000);
 
         setInterval(() => {
             range.value = audio.currentTime;
             if( Math.floor(audio.currentTime) == Math.floor(range.max) ){
                 range.value = 0;
-                play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
+                play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>'
             }
-        }, 200);
+        }, 1000);
 
         setInterval( () => {
             let cur = audio.currentTime;

@@ -128,12 +128,15 @@ const createCard = ( data ) => {
     const addSmall = document.createElement("div");
 
     imgOver.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>';
-    add.textContent = "Remove";
-    addSmall.textContent = "-";
+    const addCont = document.createElement("div");
+    add.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path fill="none" d="M0 0h24v24H0z" class="style-scope yt-icon"></path><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7.53 12L9 10.5l1.4-1.41 2.07 2.08L17.6 6 19 7.41 12.47 14zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" class="style-scope yt-icon"></path></g></svg>';
+    addSmall.innerHTML = 'Remove from Library';
 
     imgOver.className = "img-over";
     add.className = "add";
     addSmall.className = "add-small";
+    addCont.className = "add-cont";
+    addCont.append(add, addSmall);
 
     // if ( data.type !== "song" ) {
     //     meta.classList.add("big-meta");
@@ -144,7 +147,7 @@ const createCard = ( data ) => {
     // }
 
     meta.append( title, artist );
-    container.append( img, imgOver, meta, add, addSmall );
+    container.append( img, imgOver, meta, addCont );
     return container;
 }
 
@@ -198,12 +201,21 @@ const handleView = ( event, name ) => {
 
 const clickHandler = (event) => {
     const tarClass = event.target.classList;
-    if ( event.target.tagName == "IMG" && event.target.parentElement.classList[0] == "detail-card" ){
-        const target = event.target;
-        const image = target.src;
-        const name = target.parentElement.getElementsByTagName("h1")[0].textContent;
-        const artist = target.parentElement.getElementsByTagName("h6")[0].textContent;
-        createMusicPlayer(name, image, artist);
+    if(event.target.parentElement.classList[0] == "img-over" ) {
+        const target = event.target.parentElement.parentElement;
+        const name = target.getElementsByTagName("H1")[0].textContent;
+        const img = target.getElementsByTagName("IMG")[0].src;
+        const artist = target.getElementsByTagName("H6")[0].textContent;
+        // console.log(name, img, artist);
+        // console.log(target)
+        createMusicPlayer(name, img, artist);
+    } else if ( event.target.parentElement.parentElement.classList[0] == "img-over" ){
+        const target = event.target.parentElement.parentElement.parentElement;
+        const name = target.getElementsByTagName("H1")[0].textContent;
+        const img = target.getElementsByTagName("IMG")[0].src;
+        const artist = target.getElementsByTagName("H6")[0].textContent;
+        // console.log(name, img, artist);
+        createMusicPlayer(name, img, artist);
     }
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
