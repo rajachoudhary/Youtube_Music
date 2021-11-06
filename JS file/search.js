@@ -322,12 +322,18 @@ const clickHandler = (event) => {
                 tabs[0].classList.add("active");
                 tabs[1].classList.remove("active");
             }
-        } else if ( tarClass[0] == "add-btn" ) {
+        } else if ( tarClass[1] == "add-btn") {
             const target = event.target.parentElement;
-            addToLibrary(target);
             event.target.getElementsByClassName("add")[0].innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path fill="none" d="M0 0h24v24H0z" class="style-scope yt-icon"></path><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7.53 12L9 10.5l1.4-1.41 2.07 2.08L17.6 6 19 7.41 12.47 14zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" class="style-scope yt-icon"></path></g></svg>';
             event.target.getElementsByClassName("add-small")[0].innerHTML = 'Remove from Library';
             event.target.classList.remove("add-btn");
+            addToLibrary(target);
+        } else if ( event.target.parentElement.classList[1] == "add-btn" ){
+            console.log(event.target);
+            event.target.parentElement.getElementsByClassName("add")[0].innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path fill="none" d="M0 0h24v24H0z" class="style-scope yt-icon"></path><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7.53 12L9 10.5l1.4-1.41 2.07 2.08L17.6 6 19 7.41 12.47 14zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" class="style-scope yt-icon"></path></g></svg>';
+            event.target.parentElement.getElementsByClassName("add-small")[0].innerHTML = 'Remove from Library';
+            event.target.parentElement.classList.remove("add-btn");
+            addToLibrary(event.target.parentElement.parentElement);
         }
     }
 }

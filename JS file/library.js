@@ -201,6 +201,7 @@ const handleView = ( event, name ) => {
 
 const clickHandler = (event) => {
     const tarClass = event.target.classList;
+    // console.log(event.target.parentElement)
     if(event.target.parentElement.classList[0] == "img-over" ) {
         const target = event.target.parentElement.parentElement;
         const name = target.getElementsByTagName("H1")[0].textContent;
@@ -216,6 +217,13 @@ const clickHandler = (event) => {
         const artist = target.getElementsByTagName("H6")[0].textContent;
         // console.log(name, img, artist);
         createMusicPlayer(name, img, artist);
+    } else if ( tarClass[0] == "add-cont") {
+        const target = event.target.parentElement;
+        removeFromLibrary(target);
+        target.parentElement.style.display = "none";
+    } else if ( event.target.parentElement.classList[0] == "add-cont" ){
+        removeFromLibrary(event.target.parentElement.parentElement);
+        event.target.parentElement.parentElement.style.display = "none";
     }
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
@@ -229,11 +237,7 @@ const clickHandler = (event) => {
         } else if ( tarClass[0] == "tab" ){
             const name = event.target.textContent.toLowerCase();
             handleView(event, name);
-        } else if ( tarClass[0] == "add" || tarClass[0] == "add-small" ) {
-            const target = event.target.parentElement;
-            removeFromLibrary(target)
-            target.style.display = "none";
-        }
+        } 
     }
 }
 
