@@ -108,24 +108,36 @@
     display: none;
     background: #00000091;
 }
-.detail-card:hover > .img-over > svg, .detail-card:hover > .add {
+.detail-card:hover > .img-over > svg {
     display: block;
 }
-.add-small {
-    display: none;
+.detail-card:hover > .add-cont {
+    display: flex;
 }
-.add, .add-small {
+.add-cont {
     display: none;
     font-size: 1.25rem;
     font-weight: 500;
     height: 3rem;
     position: absolute;
-    right: 20rem;
+    left: 68%;
+    gap: 0.25rem;
+    max-width: 30rem;
     padding: 0.5rem 0.75rem 0.5rem;
     margin-top: -0.05rem;
     border-radius: 0.2rem;
-    background-color: rgb(255, 255, 255);
-    color: #000000;
+    color: #232323;
+    background-color: #f3f3f3;
+    fill: #232323;
+}
+.add {
+    width: 2rem;
+    fill: #232323;
+    color: #f3f3f3;
+}
+.add-small {
+    max-width: 30rem;
+    display: block;
 }
 
 /* library */
@@ -165,17 +177,14 @@
     .detail-card {
         width: 90%;    
     }
-    .detail-card:hover > .add-small {
-        display: block;
-    }
     .detail-card h1 {
         max-width: 30rem;
     }
-    .detail-card:hover > .add {
+    .detail-card:hover .add-small {
         display: none;
     }
-    .detail-card:hover > .add-small {
-        display: block;
+    .add-cont {
+        left: 83%;
     }
 }
 
@@ -190,9 +199,8 @@
     .detail-card {
         width: 95%;    
     }
-    .add-small {
-        display: none;
-        right: 3rem;
+    .add-cont {
+        left: 88%;
     }
     .detail-card h1 {
         max-width: 20rem;
