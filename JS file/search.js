@@ -150,7 +150,7 @@ const displaydetails = (data, target, k) => {
 
     if ( k ){
         lim = data.length;
-        see.textContent = "close";
+        see.textContent = "Close";
         see.className += " close";
     }
 
@@ -294,11 +294,11 @@ const clickHandler = (event) => {
     if ( tarClass[0] ){
         const target = tarClass[0].toLowerCase();
         if ( tarClass[2] == "close" ){
-            displaydetails(searchResults[target].content, target, false);
+            displaydetails(searchResults[target.slice(0, target.length-1)].content, target.slice(0, target.length-1), false);
             document.getElementById("results").style.display = "block";
             document.getElementById("details-view").style.display = "none";
         } else if ( tarClass[1] == "subhead" ){
-            displaydetails(searchResults[target].content, "details-view", true);
+            displaydetails(searchResults[target.slice(0, target.length-1)].content, "details-view", true);
             document.getElementById("details-view").style.display = "block";
             document.getElementById("results").style.display = "none";
             document.getElementById("library").style.display = "none";
