@@ -114,13 +114,16 @@ const setSrc = ( audio, path, play, isDownloaded ) => {
             play.innerHTML = '<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M8 5v14l11-7z"></path></g></svg>'
         }
     });
+    let count = 0;
     if ( !isDownloaded ) {
-        setInterval( () => {
+        const id = setInterval( () => {
             const a = audio.currentTime;
             const state = audio.paused;
             const play = document.getElementById("play");
             audio.pause();
             audio.load();
+            count++;
+            if ( count > 15 ) clearInterval(id);
             if ( !state ){
                 audio.play();
                 play.innerHTML = `<svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g ><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></g></svg>`
@@ -197,7 +200,7 @@ const createMusicPlayer = async ( name, img, artist ) => {
         meta.append(image, texts);
         btns.append( prev, play, next)
         container.append( audio, musicSlider, btns, time, meta, menuOption() );
-        container.id = "music-player"
+        container.id = "music-player";
         
 
         setInterval( () => {
@@ -253,7 +256,7 @@ const createMusicPlayer = async ( name, img, artist ) => {
                     setSrc(audio, path, play, flag);
                     clearInterval(id);
                 }
-            }, 7000);
+            }, 10000);
         }
     } catch ( err ) {
         let container = document.getElementById("music-player");
