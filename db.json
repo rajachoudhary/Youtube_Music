@@ -86,6 +86,209 @@
       "artists": [],
       "playlists": [],
       "videos": []
+    },
+    {
+      "id": 2,
+      "parentId": 4,
+      "songs": [
+        {
+          "type": "song",
+          "videoId": "5-FGxUINL-Q",
+          "playlistId": "RDAMVM5-FGxUINL-Q",
+          "name": "Astronaut In The Ocean",
+          "artist": {
+            "name": "Masked Wolf",
+            "browseId": "UCeYiAaXw-aauILPI-jSVi8g"
+          },
+          "album": {
+            "name": "Masked Wolf",
+            "browseId": "UCeYiAaXw-aauILPI-jSVi8g"
+          },
+          "duration": 133000,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/CjYJD2IOmMqq8jWSK19tgPka1hB6BQsgs5QXO0UKC2h3cga7ODmxb6AoZesN1bnugV-O5wMUT6_v2G8E=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/CjYJD2IOmMqq8jWSK19tgPka1hB6BQsgs5QXO0UKC2h3cga7ODmxb6AoZesN1bnugV-O5wMUT6_v2G8E=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ],
+          "params": "wAEB"
+        }
+      ],
+      "artists": [],
+      "playlists": [],
+      "videos": []
+    },
+    {
+      "parentId": 4,
+      "songs": [
+        {
+          "type": "song",
+          "videoId": "5-FGxUINL-Q",
+          "playlistId": "RDAMVM5-FGxUINL-Q",
+          "name": "Astronaut In The Ocean",
+          "artist": {
+            "name": "Masked Wolf",
+            "browseId": "UCeYiAaXw-aauILPI-jSVi8g"
+          },
+          "album": {
+            "name": "Masked Wolf",
+            "browseId": "UCeYiAaXw-aauILPI-jSVi8g"
+          },
+          "duration": 133000,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/CjYJD2IOmMqq8jWSK19tgPka1hB6BQsgs5QXO0UKC2h3cga7ODmxb6AoZesN1bnugV-O5wMUT6_v2G8E=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/CjYJD2IOmMqq8jWSK19tgPka1hB6BQsgs5QXO0UKC2h3cga7ODmxb6AoZesN1bnugV-O5wMUT6_v2G8E=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ],
+          "params": "wAEB"
+        }
+      ],
+      "artists": [],
+      "playlists": [],
+      "videos": [],
+      "id": 3
+    },
+    {
+      "id": 4,
+      "parentId": 6,
+      "songs": [
+        {
+          "type": "song",
+          "videoId": "cW7Y-yFNPAU",
+          "playlistId": "RDAMVMcW7Y-yFNPAU",
+          "name": "Chaka Chak",
+          "artist": {
+            "name": "Shreya Ghoshal",
+            "browseId": "UCrC-7fsdTCYeaRBpwA6j-Eg"
+          },
+          "album": {
+            "name": "Shreya Ghoshal",
+            "browseId": "UCrC-7fsdTCYeaRBpwA6j-Eg"
+          },
+          "duration": 272000,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/SptwamjhlZv04fzi3B-Crqyl7HZMXrNBIzexCgLjdxJ9SXxciHbpNc7ybSXmfJAxnGa_j0M0JtG635PZuw=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/SptwamjhlZv04fzi3B-Crqyl7HZMXrNBIzexCgLjdxJ9SXxciHbpNc7ybSXmfJAxnGa_j0M0JtG635PZuw=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ],
+          "params": "wAEB"
+        },
+        {
+          "type": "song",
+          "videoId": "D9zidy7SxPE",
+          "playlistId": "RDAMVMD9zidy7SxPE",
+          "name": "Luka Chuppi",
+          "artist": {
+            "name": "A.R. Rahman",
+            "browseId": "UCtJe0RYzgPddQXKtWduxz_w"
+          },
+          "album": {
+            "name": "A.R. Rahman",
+            "browseId": "UCtJe0RYzgPddQXKtWduxz_w"
+          },
+          "duration": 396000,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/yHEQOZJAIi7wZ4vgBF6VFMRhIiwqCGrnapNPa2SyG7htt_FiXU7QbMrWyZ3USDliDRaovbUVe1YlG6v5qQ=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/yHEQOZJAIi7wZ4vgBF6VFMRhIiwqCGrnapNPa2SyG7htt_FiXU7QbMrWyZ3USDliDRaovbUVe1YlG6v5qQ=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ],
+          "params": "wAEB"
+        }
+      ],
+      "artists": [
+        {
+          "type": "artist",
+          "browseId": "UCtJe0RYzgPddQXKtWduxz_w",
+          "name": "A. R. Rahman",
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/vHMOuDn8gr3SW9Pm8yFgmtYzM5kj4ayng5HKRjW0OyjG9mPK923XMVtTZTt4NUG_1aemWNLSQ27zjtA=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/vHMOuDn8gr3SW9Pm8yFgmtYzM5kj4ayng5HKRjW0OyjG9mPK923XMVtTZTt4NUG_1aemWNLSQ27zjtA=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            }
+          ]
+        }
+      ],
+      "playlists": [
+        {
+          "type": "playlist",
+          "browseId": "VLRDCLAK5uy_l6PQ8P7JV3-etx29VGChtEGzLH2qd20w8",
+          "title": "Presenting A.R.Rahman (Hindi)",
+          "author": "YouTube Music",
+          "trackCount": 50,
+          "thumbnails": [
+            {
+              "url": "https://lh3.googleusercontent.com/2PHv6LeyYla5YFNqgvHfvRa46V6Nf8D56wQZSqHFdr52Ev5iJkgf9aJW95TyTAGf7N5yDBCHL5ukxdI=w60-h60-l90-rj",
+              "width": 60,
+              "height": 60
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/2PHv6LeyYla5YFNqgvHfvRa46V6Nf8D56wQZSqHFdr52Ev5iJkgf9aJW95TyTAGf7N5yDBCHL5ukxdI=w120-h120-l90-rj",
+              "width": 120,
+              "height": 120
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/2PHv6LeyYla5YFNqgvHfvRa46V6Nf8D56wQZSqHFdr52Ev5iJkgf9aJW95TyTAGf7N5yDBCHL5ukxdI=w226-h226-l90-rj",
+              "width": 226,
+              "height": 226
+            },
+            {
+              "url": "https://lh3.googleusercontent.com/2PHv6LeyYla5YFNqgvHfvRa46V6Nf8D56wQZSqHFdr52Ev5iJkgf9aJW95TyTAGf7N5yDBCHL5ukxdI=w544-h544-l90-rj",
+              "width": 544,
+              "height": 544
+            }
+          ]
+        }
+      ],
+      "videos": [
+        {
+          "type": "video",
+          "videoId": "kbMinfmC3E0",
+          "playlistId": "RDAMVMkbMinfmC3E0",
+          "name": "O Paalanhaare",
+          "author": "Lata Mangeshkar",
+          "views": "Sadhana Sargam",
+          "duration": 305000,
+          "thumbnails": {
+            "url": "https://i.ytimg.com/vi/kbMinfmC3E0/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&rs=AMzJL3k1-NQcnLWh19CWlCeJJ7L255Mnaw",
+            "width": 400,
+            "height": 225
+          },
+          "params": "wAEB"
+        }
+      ]
     }
   ]
 }

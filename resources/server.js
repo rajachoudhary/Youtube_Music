@@ -15,7 +15,7 @@ const API_KEYS = [
     "AIzaSyAjG5VFLmygsWW20tG0K6TR5ApGEzgsiMI"
 ]
 
-let curr = 3;
+let curr = 0;
 
 
 
@@ -48,7 +48,6 @@ const main = () => {
                 const content = result.data.items;
                 let idData;
                 for ( const result of content ){
-                    console.log(result);
                     const { id } = result;
                     if ( id.kind === "youtube#video" ){
                         idData = id.videoId;
@@ -57,9 +56,14 @@ const main = () => {
                 }
                 
                 const path = `./${req.params.name}.mp3`;
-
+                const dir = './audio';
+                
+                if (!fs.existsSync(dir)){
+                    fs.mkdirSync(dir);
+                }
+                
                 ytdl(`http://www.youtube.com/watch?v=${idData}`, { filter: format => format.itag === 140 })
-                .pipe(fs.createWriteStream(`./audio/${req.params.name}.mp3`))
+                .pipe(fs.createWriteStream(`${dir}/${req.params.name}.mp3`))
                 res.send(path);
             } catch ( err ) {
                 res.status = 500;
