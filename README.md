@@ -1,6 +1,5 @@
-# Youtube Music Clone [Demo](https://youtu.be/A3Tlmhvr8H4)
-Built during Second Construct Week held after completition of Unit 3 in Masai.A visual demo of all the features can be found in this video - [Demo](https://youtu.be/A3Tlmhvr8H4)
-
+# Youtube Music Clone [YouTube-Music Clone](https://yt-music-masters.netlify.app) [![Website https://yt-music-masters.netlify.app](https://img.shields.io/website-up-down-green-red/https/yt-music-masters.netlify.app.svg)](https://yt-music-masters.netlify.app)
+Built during Second Construct Week held after completition of Unit 3 in Masai. A visual demo of all the features can be found in this video - [Demo](https://youtu.be/A3Tlmhvr8H4). You can play any song, search for any artist, song, playlist and add it to the library. Library will persist only for few hours as it is maintained using heroku and mock- server.
 
 ## Technologies used :-
 1) HTML
@@ -21,14 +20,14 @@ Built during Second Construct Week held after completition of Unit 3 in Masai.A 
 
 ## Contributions:-
 ### [Kundan Chaudhary](https://github.com/kundan9724) - [LinkedIn]()
-->
- <br/>->
- <br/>->
+-> Authentication
+ <br/>-> Explore Page
+ <br/>-> Related songs page
 
 ### [Raja Choudhary](https://github.com/rajachoudhary) - [LinkedIn]()
-->
- <br/>->
- <br/>->
+-> Upgrade
+ <br/>-> Top 100 Charts Page
+ <br/>-> Trending Section
 
 
 ### [Ravi Shukla](https://github.com/Rshukla12) - [LinkedIn](https://www.linkedin.com/in/ravi-shukla-94036693/)
