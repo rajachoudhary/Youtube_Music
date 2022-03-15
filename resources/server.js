@@ -9,10 +9,10 @@ const api = new youtubeMusicApi()
 const app = express();
 const port = 3002;
 const API_KEYS = [
-    "AIzaSyDb9qA-cBCQI6Goi0TJRy7qnBMRAgRzgdw",
-    "AIzaSyDoKuHzZmp-UO0RxXytDEfxpBH5ZRWVsoU",
-    "AIzaSyC9dpMKJjHBjr8IcVVA27evKundh65GXqc",
-    "AIzaSyAjG5VFLmygsWW20tG0K6TR5ApGEzgsiMI"
+    process.env.GOOGLE_API_KEY1,
+    process.env.GOOGLE_API_KEY2,
+    process.env.GOOGLE_API_KEY3,
+    process.env.GOOGLE_API_KEY4,
 ]
 
 let curr = 0;
